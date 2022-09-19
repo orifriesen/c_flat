@@ -13,9 +13,11 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!GetComponent<Renderer>().isVisible){
+            Destroy(gameObject);
+        }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D other) {
         other.collider.SendMessage("PlaySound");
     }
