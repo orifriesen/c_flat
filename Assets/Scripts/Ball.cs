@@ -35,8 +35,7 @@ public class Ball : MonoBehaviour
 
     private void setPitchAsVelocity(){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 50 * 24);
-        Debug.Log(velocityArrValue);
+        int velocityArrValue = (int) (velocity / 50 * allKeys.Length);
         if(velocityArrValue <= 23 && velocityArrValue >=0){
             this.sound.clip = allKeys[velocityArrValue];
         }
