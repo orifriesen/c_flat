@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 589088346345296320}
   - component: {fileID: 589088346345296323}
   - component: {fileID: 5989936889982381107}
-  - component: {fileID: 1176163995366208438}
+  - component: {fileID: -8505248280718583132}
   m_Layer: 3
   m_Name: Ball
   m_TagString: Ball
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659b43567e0ad5648bac9c7cb7613205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 1176163995366208438}
---- !u!82 &1176163995366208438
+  sound: {fileID: -8505248280718583132}
+--- !u!82 &-8505248280718583132
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

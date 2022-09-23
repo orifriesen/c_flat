@@ -23,8 +23,8 @@ public class Ball : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.layer == 6){
-            this.sound.pitch=getVelocityAsPitch();
-            this.playSound();
+            this.sound.pitch = getVelocityAsPitch();
+            playSound();
         }
     }
 
@@ -34,6 +34,6 @@ public class Ball : MonoBehaviour
 
     private float getVelocityAsPitch(){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        return (Vector2.SqrMagnitude(this.rb.velocity) / 15) -2;
+        return (Vector2.SqrMagnitude(this.rb.velocity) / 15) -1;
     }
 }
