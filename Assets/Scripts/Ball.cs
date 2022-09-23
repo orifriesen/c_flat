@@ -34,6 +34,6 @@ public class Ball : MonoBehaviour
 
     private float getVelocityAsPitch(){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        return (Vector2.SqrMagnitude(this.rb.velocity) / 15) -1;
+        return (Vector2.SqrMagnitude(this.rb.velocity) / 20) - (float)0.5;
     }
 }
