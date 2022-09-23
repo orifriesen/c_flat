@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+     Rigidbody2D rb;
+     public AudioSource sound;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -19,6 +22,18 @@ public class Ball : MonoBehaviour
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
-        other.collider.SendMessage("PlaySound");
+        if(other.gameObject.layer == 6){
+            this.sound.pitch=getVelocityAsPitch();
+            this.playSound();
+        }
+    }
+
+    private void playSound(){
+        sound.Play();
+    }
+
+    private float getVelocityAsPitch(){
+        float velocity=Vector2.SqrMagnitude(this.rb.velocity);
+        return (Vector2.SqrMagnitude(this.rb.velocity) / 15) -2;
     }
 }
