@@ -8,17 +8,19 @@ public class BallSpawner : MonoBehaviour
     public float delay;
     public GameObject ball;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(Time.time > delay + lastSpawn){
-            Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
+
+            GameObject b = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
+            
+            GameObject[] otherBalls = GameObject.FindGameObjectsWithTag("Ball");
+
+            foreach (GameObject obj in otherBalls) {
+                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), b.GetComponent<Collider2D>()); 
+            }    
+
             lastSpawn=Time.time;
     }
     }
