@@ -221,7 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 5673487124537941255, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
+  collider: {fileID: -8453578493681095280, guid: 4c482a481ecff884fbce1fa531db4ec7, type: 3}
   musicLines: []
+  musicLineColliders: []
 --- !u!1 &2124284197
 GameObject:
   m_ObjectHideFlags: 0

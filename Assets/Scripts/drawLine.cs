@@ -7,7 +7,9 @@ public class drawLine : MonoBehaviour
 {
     Vector3 initMousePos, finalMousePos;
     public LineRenderer line;
+    public EdgeCollider2D collider;
     public List<LineRenderer> musicLines = new List<LineRenderer>();
+    public List<EdgeCollider2D> musicLineColliders = new List<EdgeCollider2D>();
     // Start is called before the first frame update
     void Start() {
 
@@ -19,6 +21,7 @@ public class drawLine : MonoBehaviour
             initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             initMousePos.z = Camera.main.nearClipPlane;
             musicLines.Add(Instantiate(line));
+            musicLineColliders.Add(Instantiate(collider));
             Debug.Log("click");
         }
 
@@ -26,6 +29,7 @@ public class drawLine : MonoBehaviour
             finalMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             finalMousePos.z = Camera.main.nearClipPlane;
             musicLines.Last().SetPosition(0, initMousePos);
+            musicLineColliders.Last().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
             musicLines.Last().SetPosition(1, finalMousePos);
         }
     }
