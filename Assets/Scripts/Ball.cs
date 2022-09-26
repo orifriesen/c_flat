@@ -27,13 +27,8 @@ public class Ball : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.layer == 6){
-            setPitchAsScale();
-            playSound();
+            playClipOnVelocity(majorKey);
         }
-    }
-
-    private void playSound(){
-        sound.PlayOneShot(sound.clip);
     }
 
     private void setPitchAsVelocity(){
@@ -44,11 +39,11 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void setPitchAsScale(){
+    private void playClipOnVelocity(AudioClip[] audioClips){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 50 * majorKey.Length);
-        if(velocityArrValue <= 13 && velocityArrValue >=0){
-            this.sound.clip = majorKey[velocityArrValue];
+        int velocityArrValue = (int) (velocity / 55 * audioClips.Length);
+        if(velocityArrValue <= audioClips.Length && velocityArrValue >=0){
+            this.sound.PlayOneShot(audioClips[velocityArrValue]);
         }
     }
 }

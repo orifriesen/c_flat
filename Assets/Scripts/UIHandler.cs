@@ -9,8 +9,8 @@ public class UIHandler : MonoBehaviour
     public Button stopButton;
     void Start(){
         playButton.onClick.AddListener(PlayOnClick);
-        pauseButton.onClick.AddListener(StopOnClick);
-        stopButton.onClick.AddListener(PauseOnClick);
+        pauseButton.onClick.AddListener(PauseOnClick);
+        stopButton.onClick.AddListener(StopOnClick);
     }
     void PlayOnClick(){
 		Debug.Log ("You have clicked the play button!");
@@ -18,7 +18,7 @@ public class UIHandler : MonoBehaviour
     void PauseOnClick(){
 		Debug.Log ("You have clicked the pause button!");
 	}
-        void StopOnClick(){
+    void StopOnClick(){
 		Debug.Log ("You have clicked the stop button!");
 	}
 }
