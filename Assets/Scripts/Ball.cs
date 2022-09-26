@@ -33,7 +33,7 @@ public class Ball : MonoBehaviour
     }
 
     private void playSound(){
-        sound.Play();
+        sound.PlayOneShot(sound.clip);
     }
 
     private void setPitchAsVelocity(){
