@@ -7,6 +7,9 @@ public class Ball : MonoBehaviour
      Rigidbody2D rb;
      public AudioSource sound;
      public AudioClip[] allKeys;
+     public AudioClip[] minorKey;
+     public AudioClip[] majorKey;
+     public AudioClip[] harmonic;
 
     // Start is called before the first frame update
     void Start()
