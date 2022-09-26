@@ -31,19 +31,12 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void setPitchAsVelocity(){
-        float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 50 * allKeys.Length);
-        if(velocityArrValue <= 23 && velocityArrValue >=0){
-            this.sound.clip = allKeys[velocityArrValue];
-        }
-    }
-
     private void playClipOnVelocity(AudioClip[] audioClips){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 55 * audioClips.Length);
-        if(velocityArrValue <= audioClips.Length && velocityArrValue >=0){
-            this.sound.PlayOneShot(audioClips[velocityArrValue]);
+        int velocityArrValue = (int) (velocity / 110 * audioClips.Length);
+        if(velocityArrValue >= audioClips.Length){
+            velocityArrValue = audioClips.Length -1;
         }
+        this.sound.PlayOneShot(audioClips[velocityArrValue]);
     }
 }

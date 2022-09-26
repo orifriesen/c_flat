@@ -22,7 +22,7 @@ public class drawLine : MonoBehaviour
             initMousePos.z = Camera.main.nearClipPlane;
             musicLines.Add(Instantiate(line));
             musicLineColliders.Add(Instantiate(collider));
-            Debug.Log("click");
+            // Debug.Log("click");
         }
 
         if(Input.GetMouseButton(0)) {
