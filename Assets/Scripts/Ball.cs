@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.layer == 6 && Time.time > delay + lastSound){
+        if(other.gameObject.layer == 6 && Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .1){
             playClipOnVelocity(harmonic);
             lastSound = Time.time;
         }
