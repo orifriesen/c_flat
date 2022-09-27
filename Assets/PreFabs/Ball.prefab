@@ -204,6 +204,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7a2a6807df2af34d80d8bfbe7d28bbf, type: 3}
   - {fileID: 8300000, guid: 7ef12f3e1d83ebd4bb7fe54c3fdb89bd, type: 3}
   - {fileID: 8300000, guid: 63aa41185e4be9848bed6ce598cba5ab, type: 3}
+  delay: 0.2
 --- !u!82 &-8505248280718583132
 AudioSource:
   m_ObjectHideFlags: 0
