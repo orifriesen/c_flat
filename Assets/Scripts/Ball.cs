@@ -7,6 +7,12 @@ public class Ball : MonoBehaviour
      Rigidbody2D rb;
      public AudioSource sound;
      public AudioClip[] allKeys;
+     public AudioClip[] minorKey;
+     public AudioClip[] majorKey;
+     public AudioClip[] harmonic;
+
+     private float lastSound = 0.0f;
+     private float delay = .3f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,21 +29,18 @@ public class Ball : MonoBehaviour
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.layer == 6){
-            setPitchAsVelocity();
-            playSound();
+        if(other.gameObject.layer == 6 && Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .1){
+            playClipOnVelocity(harmonic);
+            lastSound = Time.time;
         }
     }
 
-    private void playSound(){
-        sound.Play();
-    }
-
-    private void setPitchAsVelocity(){
+    private void playClipOnVelocity(AudioClip[] audioClips){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 50 * allKeys.Length);
-        if(velocityArrValue <= 23 && velocityArrValue >=0){
-            this.sound.clip = allKeys[velocityArrValue];
+        int velocityArrValue = (int) (velocity / 110 * audioClips.Length);
+        if(velocityArrValue >= audioClips.Length){
+            velocityArrValue = audioClips.Length -1;
         }
+        this.sound.PlayOneShot(audioClips[velocityArrValue]);
     }
 }
