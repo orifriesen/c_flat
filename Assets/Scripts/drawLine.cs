@@ -16,7 +16,9 @@ public class drawLine : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             initMousePos.z = Camera.main.nearClipPlane;
-            musicLines.Add(Instantiate(line));
+            LineRenderer lineRender = Instantiate(line);
+            
+            musicLines.Add(lineRender);
             musicLineColliders.Add(Instantiate(collider));
         }
 

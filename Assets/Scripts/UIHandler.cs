@@ -20,17 +20,17 @@ public class UIHandler : MonoBehaviour
         // stopButton.onClick.AddListener(StopOnClick);
         resetButton.onClick.AddListener(ResetOnClick);
     }
-    void PlayOnClick(){
-		  playCondition = PlayCondition.PLAY;
-	}
-    void PauseOnClick(){
-		  playCondition = PlayCondition.PAUSE;
-	}
-    void StopOnClick(){
-      PauseOnClick();
-    }
+    // void PlayOnClick(){
+	// 	  playCondition = PlayCondition.PLAY;
+	// }
+    // void PauseOnClick(){
+	// 	  playCondition = PlayCondition.PAUSE;
+	// }
+    // void StopOnClick(){
+    //   PauseOnClick();
+    // }
     void ResetOnClick(){
-		  playCondition = PlayCondition.PAUSE;
+		//   playCondition = PlayCondition.PAUSE;
             GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
             foreach (GameObject ball in allBalls) {
                 Destroy(ball);
