@@ -12,16 +12,15 @@ public class Ball : MonoBehaviour
      public AudioClip[] harmonic;
 
      private float lastSound = 0.0f;
-     private float delay = .3f;
+     private float delay = 0.05f;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        lastSound = Time.time;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!GetComponent<Renderer>().isVisible){
@@ -30,7 +29,11 @@ public class Ball : MonoBehaviour
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.layer == 6 && Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .1){
+        if(other.gameObject.layer != 6){
+            return;
+        }
+
+        if(Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .05f){
             playClipOnVelocity(harmonic);
             lastSound = Time.time;
         }
