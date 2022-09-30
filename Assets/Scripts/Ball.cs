@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-     Rigidbody2D rb;
+    //  private Rigidbody2D rb;
+    Rigidbody2D rb;
      public AudioSource sound;
      public AudioClip[] allKeys;
      public AudioClip[] minorKey;
@@ -14,16 +15,30 @@ public class Ball : MonoBehaviour
      private float lastSound = 0.0f;
      private float delay = 0.05f;
 
+     private double minX = 0;
+     private double maxX;
+     private double minY = 0;
+     private double maxY;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
+
+        Vector2 cameraBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        maxX = cameraBounds.x;
+        maxY = cameraBounds.y;
+        minY = -cameraBounds.y;
+        minX = -cameraBounds.x;
+
     }
 
     void Update()
     {
-        if(!GetComponent<Renderer>().isVisible){
+        double xPos = this.transform.position.x;
+        double yPos = this.transform.position.y;
+
+        if(minY > yPos || maxY < yPos || minX > xPos || maxX < xPos){
             Destroy(gameObject);
         }
     }
