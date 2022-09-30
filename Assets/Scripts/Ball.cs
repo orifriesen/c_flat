@@ -15,9 +15,9 @@ public class Ball : MonoBehaviour
      private float lastSound = 0.0f;
      private float delay = 0.05f;
 
-     private double minX = 0;
+     private double minX;
      private double maxX;
-     private double minY = 0;
+     private double minY;
      private double maxY;
     void Start()
     {
@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
 
-        Vector2 cameraBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        Vector2 cameraBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         maxX = cameraBounds.x;
         maxY = cameraBounds.y;
         minY = -cameraBounds.y;
