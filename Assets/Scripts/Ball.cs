@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
     // Update is called once per frame
