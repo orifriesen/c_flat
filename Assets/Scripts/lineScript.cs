@@ -6,13 +6,10 @@ public class lineScript
 {
     public LineRenderer lineRenderer;
     public EdgeCollider2D edgeCollider2D;
-    public int pos;
 
-
-    public lineScript(LineRenderer lineRenderer, EdgeCollider2D edgeCollider2D, int pos){
+    public lineScript(LineRenderer lineRenderer, EdgeCollider2D edgeCollider2D){
         this.lineRenderer = lineRenderer;
         this.edgeCollider2D = edgeCollider2D;
-        this.pos = pos;
     }
 
     public void Destroy(){

@@ -22,7 +22,7 @@ public class drawLine : MonoBehaviour
             LineRenderer lineRender = Instantiate(line);
             
 
-            musicLines.Add(new lineScript(lineRender, Instantiate(collider), musicLines.Count));
+            musicLines.Add(new lineScript(lineRender, Instantiate(collider)));
         }
 
         if(Input.GetMouseButton(0)) {
@@ -35,7 +35,7 @@ public class drawLine : MonoBehaviour
             musicLines.Last().edgeCollider2D.SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
         }
 
-        if(Input.GetMouseButtonDown(1)){
+        if(Input.GetMouseButton(1)){
             int i=0;
             foreach(lineScript lineScript in musicLines){
                 if(lineScript.isAt(Camera.main.ScreenToWorldPoint(Input.mousePosition))){
