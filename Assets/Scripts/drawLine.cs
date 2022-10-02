@@ -36,7 +36,14 @@ public class drawLine : MonoBehaviour
         }
 
         if(Input.GetMouseButtonDown(1)){
-
+            int i=0;
+            foreach(lineScript lineScript in musicLines){
+                if(lineScript.isAt(Camera.main.ScreenToWorldPoint(Input.mousePosition))){
+                    DestroyOne(i);
+                    break;
+                }
+                i++;
+            }
         }
     }
 
@@ -51,5 +58,6 @@ public class drawLine : MonoBehaviour
         musicLines[n].Destroy();
         musicLines.RemoveAt(n);
     }
+
 
 }

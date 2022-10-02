@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lineScript : MonoBehaviour
+public class lineScript
 {
     public LineRenderer lineRenderer;
     public EdgeCollider2D edgeCollider2D;
@@ -16,7 +16,11 @@ public class lineScript : MonoBehaviour
     }
 
     public void Destroy(){
-        Destroy(lineRenderer.gameObject);
-        Destroy(edgeCollider2D.gameObject);
+        UnityEngine.Object.Destroy(lineRenderer.gameObject);
+        UnityEngine.Object.Destroy(edgeCollider2D.gameObject);
+    }
+
+    public bool isAt(Vector2 pos){
+        return edgeCollider2D.bounds.Contains(pos);
     }
 }
