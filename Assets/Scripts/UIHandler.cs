@@ -19,9 +19,6 @@ public class UIHandler : MonoBehaviour
         // pauseButton.onClick.AddListener(PauseOnClick);
         // stopButton.onClick.AddListener(StopOnClick);
 
-    if(Input.GetMouseButton(0)) {
-    
-    }
 
         lineScript = GetComponent<drawLine>();
         resetButton.onClick.AddListener(ResetOnClick);
