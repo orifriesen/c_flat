@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 306445504}
-  - component: {fileID: 306445503}
   - component: {fileID: 306445502}
+  - component: {fileID: 306445505}
   m_Layer: 0
   m_Name: ScriptHandler
   m_TagString: Untagged
@@ -154,20 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetButton: {fileID: 1839550648}
---- !u!114 &306445503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306445501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e0332c134bb4947a0722fabe6be9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  line: {fileID: 5673487124537941255, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
-  collider: {fileID: -8453578493681095280, guid: 4c482a481ecff884fbce1fa531db4ec7, type: 3}
+  lineDrawer: {fileID: 306445505}
 --- !u!4 &306445504
 Transform:
   m_ObjectHideFlags: 0
@@ -183,6 +170,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &306445505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306445501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e0332c134bb4947a0722fabe6be9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  line: {fileID: 6951144630429341995, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
+  musicLines: []
 --- !u!1 &410457843
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +547,7 @@ RectTransform:
   m_GameObject: {fileID: 1839550647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.04, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 410457844}

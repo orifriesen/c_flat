@@ -5,29 +5,27 @@ using UnityEngine;
 public class drawLine : MonoBehaviour
 {
     Vector2 initMousePos, finalMousePos;
-    public LineRenderer line;
-    
-    public new EdgeCollider2D collider;
+    public GameObject line;
 
     
-    public List<lineScript> musicLines = new List<lineScript>();
+    public List<GameObject> musicLines = new List<GameObject>();
 
     public void startLine(){
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        musicLines.Add(new lineScript(Instantiate(line), Instantiate(collider)));
+        musicLines.Add(Instantiate(line));
     }
 
     public void finishLine(){
         finalMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        musicLines.Last().lineRenderer.SetPosition(0, initMousePos);
-        musicLines.Last().lineRenderer.SetPosition(1, finalMousePos);
-        musicLines.Last().edgeCollider2D.SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
+        musicLines.Last().GetComponent<LineRenderer>().SetPosition(0, initMousePos);
+        musicLines.Last().GetComponent<LineRenderer>().SetPosition(1, finalMousePos);
+        musicLines.Last().GetComponent<EdgeCollider2D>().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
     }
 
     public void destroyIfAt(Vector2 pos){
         int i=0;
-        foreach(lineScript lineScript in musicLines){
-            if(lineScript.isAt(pos)){
+        foreach(GameObject l in musicLines){
+            if(l.GetComponent<EdgeCollider2D>().bounds.Contains(pos)){
                 DestroyOne(i);
                 break;
             }
@@ -38,13 +36,13 @@ public class drawLine : MonoBehaviour
 
     public void DestroyAll(){
         for(int i=0; i<musicLines.Count; i++){
-            musicLines[i].Destroy();
+            Destroy(musicLines[i]);
         }
         musicLines.Clear();
     }
 
     public void DestroyOne(int n){
-        musicLines[n].Destroy();
+        Destroy(musicLines[n]);
         musicLines.RemoveAt(n);
     }
 

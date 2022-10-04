@@ -5,21 +5,22 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 { 
     public Button resetButton;
-    private drawLine lineScript;
-    
+
+    public drawLine lineDrawer;
     
     void Start(){
-        lineScript = GetComponent<drawLine>();
         resetButton.onClick.AddListener(ResetOnClick);
     }
 
     void Update(){
         if (Input.GetMouseButtonDown(0)) {
-            lineScript.startLine();
+            lineDrawer.startLine();
         }else if(Input.GetMouseButton(0)){
-            lineScript.finishLine();
+            lineDrawer.finishLine();
         }else if(Input.GetMouseButtonDown(1)){
-            lineScript.destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            lineDrawer.destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }else if(Input.GetKeyDown("space")){
+            // Instantiate(ballSpawner, Camera.main.ScreenToWorldPoint(Input.mousePosition), new Quaternion(0,0,0,1));
         }
     }
     void ResetOnClick(){
@@ -27,7 +28,7 @@ public class UIHandler : MonoBehaviour
             foreach (GameObject ball in allBalls) {
                 Destroy(ball);
             }
-
-            lineScript.DestroyAll();    
+            lineDrawer.DestroyAll();    
 	}
+
 }
