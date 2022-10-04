@@ -6,8 +6,6 @@ public class drawLine : MonoBehaviour
 {
     Vector2 initMousePos, finalMousePos;
     public GameObject line;
-
-    
     public List<GameObject> musicLines = new List<GameObject>();
 
     public void startLine(){
