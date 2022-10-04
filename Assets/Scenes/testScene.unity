@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &306445501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306445504}
+  - component: {fileID: 306445502}
+  - component: {fileID: 306445505}
+  m_Layer: 0
+  m_Name: ScriptHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &306445502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306445501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e857b55edb1fa44ea15225f1e119355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetButton: {fileID: 1839550648}
+  lineDrawer: {fileID: 306445505}
+--- !u!4 &306445504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306445501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8237834, y: 2.6758807, z: 69.25467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &306445505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306445501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e0332c134bb4947a0722fabe6be9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  line: {fileID: 6951144630429341995, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
+  musicLines: []
 --- !u!1 &410457843
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +296,6 @@ GameObject:
   - component: {fileID: 1081945999}
   - component: {fileID: 1081945998}
   - component: {fileID: 1081945997}
-  - component: {fileID: 1081945996}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -243,20 +303,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1081945996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081945995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e857b55edb1fa44ea15225f1e119355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resetButton: {fileID: 1839550648}
-  lineScript: {fileID: 1585969263}
 --- !u!114 &1081945997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +364,6 @@ GameObject:
   - component: {fileID: 1585969262}
   - component: {fileID: 1585969261}
   - component: {fileID: 1585969260}
-  - component: {fileID: 1585969263}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -392,22 +437,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1585969263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585969259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e0332c134bb4947a0722fabe6be9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  line: {fileID: 5673487124537941255, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
-  collider: {fileID: -8453578493681095280, guid: 4c482a481ecff884fbce1fa531db4ec7, type: 3}
-  musicLines: []
-  musicLineColliders: []
 --- !u!1 &1839550647
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +547,7 @@ RectTransform:
   m_GameObject: {fileID: 1839550647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.04, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.044, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 410457844}

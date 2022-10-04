@@ -1,43 +1,48 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class drawLine : MonoBehaviour
 {
-    Vector3 initMousePos, finalMousePos;
-    public LineRenderer line;
-    
-    public EdgeCollider2D collider;
-    public List<LineRenderer> musicLines = new List<LineRenderer>();
-    public List<EdgeCollider2D> musicLineColliders = new List<EdgeCollider2D>();
+    Vector2 initMousePos, finalMousePos;
+    public GameObject line;
+    public List<GameObject> musicLines = new List<GameObject>();
 
-    void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            initMousePos.z = Camera.main.nearClipPlane;
-            LineRenderer lineRender = Instantiate(line);
-            
-            musicLines.Add(lineRender);
-            musicLineColliders.Add(Instantiate(collider));
+    public void startLine(){
+        initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        musicLines.Add(Instantiate(line));
+    }
+
+    public void finishLine(){
+        finalMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        musicLines.Last().GetComponent<LineRenderer>().SetPosition(0, initMousePos);
+        musicLines.Last().GetComponent<LineRenderer>().SetPosition(1, finalMousePos);
+        musicLines.Last().GetComponent<EdgeCollider2D>().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
+    }
+
+    public void destroyIfAt(Vector2 pos){
+        int i=0;
+        foreach(GameObject l in musicLines){
+            if(l.GetComponent<EdgeCollider2D>().bounds.Contains(pos)){
+                DestroyOne(i);
+                break;
+            }
+            i++;
         }
 
-        if(Input.GetMouseButton(0)) {
-            finalMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            finalMousePos.z = Camera.main.nearClipPlane;
-            musicLines.Last().SetPosition(0, initMousePos);
-            musicLineColliders.Last().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
-            musicLines.Last().SetPosition(1, finalMousePos);
-        }
     }
 
     public void DestroyAll(){
-        foreach(LineRenderer musicLine in musicLines){
-            Destroy(musicLine);
+        for(int i=0; i<musicLines.Count; i++){
+            Destroy(musicLines[i]);
         }
-        foreach(EdgeCollider2D edgeCollider in musicLineColliders){
-            Destroy(edgeCollider);
-        }
+        musicLines.Clear();
     }
+
+    public void DestroyOne(int n){
+        Destroy(musicLines[n]);
+        musicLines.RemoveAt(n);
+    }
+
 
 }
