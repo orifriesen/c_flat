@@ -20,9 +20,9 @@ public class UIHandler : MonoBehaviour
             lineDrawer.finishLine();
         }else if(Input.GetMouseButtonDown(1)){
             lineDrawer.destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }else if(Input.GetKeyDown("space")){
-            BallSpawner b = Instantiate(ballSpawner, Camera.main.ScreenToWorldPoint(Input.mousePosition), ballSpawner.transform.localRotation);
-            b.transform.position = new Vector3(b.transform.position.x, b.transform.position.y, 0);
+        }else if(Input.GetKeyDown("b")){
+            Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
         }
     }
     void ResetOnClick(){
@@ -34,7 +34,6 @@ public class UIHandler : MonoBehaviour
             foreach (GameObject bs in allBallSpawners){
                 Destroy(bs);
             }
-            lineDrawer.DestroyAll();    
+            lineDrawer.DestroyAll();   
 	}
-
 }
