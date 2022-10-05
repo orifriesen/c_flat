@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetButton: {fileID: 1839550648}
-  lineDrawer: {fileID: 306445505}
+  ballSpawner: {fileID: 1943256681330663174, guid: 83e9f083f5010ca45b75dc92f95cafdd, type: 3}
 --- !u!4 &306445504
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 6951144630429341995, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
-  musicLines: []
 --- !u!1 &410457843
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +570,7 @@ GameObject:
   - component: {fileID: 2124284200}
   m_Layer: 0
   m_Name: Ball Spawner
-  m_TagString: Untagged
+  m_TagString: BallSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
