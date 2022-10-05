@@ -6,10 +6,11 @@ public class UIHandler : MonoBehaviour
 { 
     public Button resetButton;
 
-    public drawLine lineDrawer;
+    private drawLine lineDrawer;
     
     void Start(){
         resetButton.onClick.AddListener(ResetOnClick);
+        lineDrawer = GetComponent<drawLine>();
     }
 
     void Update(){

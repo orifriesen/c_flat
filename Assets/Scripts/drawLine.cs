@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class drawLine : MonoBehaviour
 {
-    Vector2 initMousePos, finalMousePos;
+    private Vector2 initMousePos, finalMousePos;
     public GameObject line;
-    public List<GameObject> musicLines = new List<GameObject>();
+    private List<GameObject> musicLines = new List<GameObject>();
 
     public void startLine(){
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
