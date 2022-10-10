@@ -37,7 +37,6 @@ public class UIHandler : MonoBehaviour
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
         }
         Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
-        Debug.Log(Physics.gravity);
     }
     void ResetOnClick(){
             GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");

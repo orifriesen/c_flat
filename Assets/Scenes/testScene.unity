@@ -383,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetButton: {fileID: 1839550648}
   ballSpawner: {fileID: 1943256681330663174, guid: 83e9f083f5010ca45b75dc92f95cafdd, type: 3}
+  gravitySlider: {fileID: 1774892232}
 --- !u!4 &306445504
 Transform:
   m_ObjectHideFlags: 0
@@ -750,7 +751,7 @@ GameObject:
   - component: {fileID: 1774892231}
   - component: {fileID: 1774892232}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: GravitySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,9 +825,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 52093713}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 20
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 9.8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
