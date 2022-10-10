@@ -35,6 +35,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        
         double xPos = this.transform.position.x;
         double yPos = this.transform.position.y;
 
@@ -56,12 +57,18 @@ public class Ball : MonoBehaviour
         }
     }
 
+
     private void playClipOnVelocity(AudioClip[] audioClips){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        int velocityArrValue = (int) (velocity / 110 * audioClips.Length);
+        double velocityNormalized = Mathf.Log(velocity, 170)*(1.0/7.0) + (velocity/170)*(6.0/7.0);
+        int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
+
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
+        }else if(velocityArrValue < 0){
+            velocityArrValue = 0;
         }
+
         this.sound.PlayOneShot(audioClips[velocityArrValue]);
     }
 }
