@@ -7,6 +7,7 @@ public class UIHandler : MonoBehaviour
 { 
     public Button resetButton;
     public BallSpawner ballSpawner;
+    public Slider gravitySlider;
     private drawLine lineDrawer;
     private int UILayer;
     private bool isButtonDownOnUI = false;
@@ -24,6 +25,7 @@ public class UIHandler : MonoBehaviour
         if(isButtonDownOnUI == true && Input.GetMouseButtonUp(0)) {
             isButtonDownOnUI = false;
         }
+        
         if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI) {
             lineDrawer.startLine();
         }else if(Input.GetMouseButton(0) && !isButtonDownOnUI){
@@ -34,6 +36,8 @@ public class UIHandler : MonoBehaviour
             Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
         }
+        Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
+        Debug.Log(Physics.gravity);
     }
     void ResetOnClick(){
             GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
