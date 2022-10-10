@@ -39,7 +39,9 @@ public class Ball : MonoBehaviour
         double yPos = this.transform.position.y;
 
         if(minY > yPos || maxY < yPos || minX > xPos || maxX < xPos){
-            Destroy(gameObject);
+            if(!sound.isPlaying){
+                Destroy(gameObject);
+            }
         }
     }
     
