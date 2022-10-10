@@ -29,7 +29,7 @@ public class UIHandler : MonoBehaviour
         }else if(Input.GetMouseButton(0) && !isButtonDownOnUI){
             lineDrawer.finishLine();
         }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
-            lineDrawer.destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
             Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
@@ -54,12 +54,12 @@ public class UIHandler : MonoBehaviour
  
  
     //Returns 'true' if we touched or hovering on Unity UI element.
-    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaycastResults)
     {
-        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        for (int index = 0; index < eventSystemRaycastResults.Count; index++)
         {
-            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
-            if (curRaysastResult.gameObject.layer == UILayer)
+            RaycastResult curRaycastResult = eventSystemRaycastResults[index];
+            if (curRaycastResult.gameObject.layer == UILayer)
                 return true;
         }
         return false;
@@ -71,9 +71,22 @@ public class UIHandler : MonoBehaviour
     {
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = Input.mousePosition;
-        List<RaycastResult> raysastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raysastResults);
-        return raysastResults;
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+        return raycastResults;
     }
 
+    void destroyIfAt(Vector2 pos){
+        lineDrawer.destroyIfAt(pos);
+        destroyBallSpawnerIfAt(pos);
+    }
+    void destroyBallSpawnerIfAt(Vector2 pos){
+        GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
+            foreach (GameObject bs in allBallSpawners){
+                if(Vector3.Distance(pos, bs.transform.position) < .30){
+                    Destroy(bs);
+                    break;
+                }
+            }
+    }
 }
