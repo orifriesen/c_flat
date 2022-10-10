@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    //  private Rigidbody2D rb;
-    Rigidbody2D rb;
-     public AudioSource sound;
-     public AudioClip[] allKeys;
-     public AudioClip[] minorKey;
-     public AudioClip[] majorKey;
-     public AudioClip[] harmonic;
+    private Rigidbody2D rb;
+    public AudioSource sound;
+    public AudioClip[] allKeys;
+    public AudioClip[] minorKey;
+    public AudioClip[] majorKey;
+    public AudioClip[] harmonic;
 
-     private float lastSound = 0.0f;
-     private float delay = 0.05f;
+    private float lastSound = 0.0f;
+    private float delay = 0.05f;
 
-     private double minX;
-     private double maxX;
-     private double minY;
-     private double maxY;
+    private double minX;
+    private double maxX;
+    private double minY;
+    private double maxY;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,7 +49,7 @@ public class Ball : MonoBehaviour
         if(other.gameObject.layer != 6){
             return;
         }
-
+    
         if(Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .05f){
             playClipOnVelocity(harmonic);
             lastSound = Time.time;
