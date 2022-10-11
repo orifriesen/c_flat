@@ -18,6 +18,7 @@ public class drawLine : MonoBehaviour
         musicLines.Last().GetComponent<LineRenderer>().SetPosition(0, initMousePos);
         musicLines.Last().GetComponent<LineRenderer>().SetPosition(1, finalMousePos);
         musicLines.Last().GetComponent<EdgeCollider2D>().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
+        musicLines.Last().GetComponent<LineRenderer>().material = toolSelector.lineMaterial;
     }
 
     public void destroyIfAt(Vector2 pos){
