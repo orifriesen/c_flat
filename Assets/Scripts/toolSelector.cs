@@ -6,12 +6,20 @@ using UnityEngine.UI;
 
 public class toolSelector : MonoBehaviour
 {
-    public Button white, red;
+    public Button white, red, orange, yellow, green, blue, purple;
+    public Material whiteLine, redLine, orangeLine, yellowLine, greenLine, blueLine, purpleLine;
+    public static Material lineMaterial;
     // Start is called before the first frame update
     void Start()
     {
         white.onClick.AddListener(WhiteClick);
         red.onClick.AddListener(RedClick);
+        orange.onClick.AddListener(OrangeClick);
+        yellow.onClick.AddListener(YellowClick);
+        green.onClick.AddListener(GreenClick);
+        blue.onClick.AddListener(BlueClick);
+        purple.onClick.AddListener(PurpleClick);
+        lineMaterial = whiteLine;
     }
 
     // Update is called once per frame
@@ -21,9 +29,24 @@ public class toolSelector : MonoBehaviour
     }
 
     void WhiteClick() {
-        Debug.Log("white");
+        lineMaterial = whiteLine;
     }
     void RedClick() {
-        Debug.Log("red");
+        lineMaterial = redLine;
+    }
+    void OrangeClick() {
+        lineMaterial = orangeLine;
+    }
+    void YellowClick() {
+        lineMaterial = yellowLine;
+    }
+    void GreenClick() {
+        lineMaterial = greenLine;
+    }
+    void BlueClick() {
+        lineMaterial = blueLine;
+    }
+    void PurpleClick() {
+        lineMaterial = purpleLine;
     }
 }
