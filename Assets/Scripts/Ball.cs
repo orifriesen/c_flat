@@ -80,11 +80,15 @@ public class Ball : MonoBehaviour
             velocityArrValue = 0;
         }
 
-        double p = (matPos+2) / 5.0;
+        double p = (matPos+3) / 6.0;
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
         audioSource.pitch = (float)p;
+        double v = 1- (.2 + (p-1)/2);
+        v = (v>1) ? 1 : v;
+        audioSource.volume = (float)v;
+
         audioSource.Play();
     }
 }
