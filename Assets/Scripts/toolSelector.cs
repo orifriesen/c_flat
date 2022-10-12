@@ -20,6 +20,7 @@ public class toolSelector : MonoBehaviour
         blue.onClick.AddListener(BlueClick);
         purple.onClick.AddListener(PurpleClick);
         lineMaterial = whiteLine;
+        white.interactable = false;
     }
 
     // Update is called once per frame
