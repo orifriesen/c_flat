@@ -19,7 +19,6 @@ public class Ball : MonoBehaviour
     private double minY;
     private double maxY;
 
-    private ArrayList audioSources;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +31,6 @@ public class Ball : MonoBehaviour
         minY = -cameraBounds.y;
         minX = -cameraBounds.x;
 
-        audioSources = new ArrayList();
     }
 
     void Update()
@@ -42,10 +40,12 @@ public class Ball : MonoBehaviour
         double yPos = this.transform.position.y;
 
         bool playing = false;
-        foreach(AudioSource audioSource in audioSources){
+        foreach(AudioSource audioSource in GetComponents<AudioSource>()){
             if(audioSource.isPlaying){
                 playing = true;
                 break;
+            }else{
+                Destroy(audioSource);
             }
         }
 
@@ -83,7 +83,6 @@ public class Ball : MonoBehaviour
         double p = (matPos+2) / 5.0;
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSources.Add(audioSource);
         audioSource.clip = audioClips[velocityArrValue];
         audioSource.pitch = (float)p;
         audioSource.Play();
