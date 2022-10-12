@@ -51,13 +51,13 @@ public class Ball : MonoBehaviour
         }
     
         if(Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .05f){
-            playClipOnVelocity(harmonic);
+            playClipOnVelocity(harmonic, other.gameObject.GetComponent<lineScript>().colorInt);
             lastSound = Time.time;
         }
     }
 
 
-    private void playClipOnVelocity(AudioClip[] audioClips){
+    private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 170)*(1.0/7.0) + (velocity/170)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
@@ -68,6 +68,12 @@ public class Ball : MonoBehaviour
             velocityArrValue = 0;
         }
 
-        this.sound.PlayOneShot(audioClips[velocityArrValue]);
+        double p = (matPos+2) / 5.0;
+        this.sound.pitch = (float)p;
+
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClips[velocityArrValue];
+        audioSource.pitch = (float)p;
+        audioSource.Play();
     }
 }

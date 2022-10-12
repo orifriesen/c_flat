@@ -49,6 +49,7 @@ public class UIHandler : MonoBehaviour
             }
             lineDrawer.DestroyAll();   
 	}
+    
     //Returns 'true' if we touched or hovering on Unity UI element.
     public bool IsPointerOverUIElement()
     {

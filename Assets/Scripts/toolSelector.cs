@@ -23,12 +23,6 @@ public class toolSelector : MonoBehaviour
         white.interactable = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void WhiteClick() {
         lineMaterial = whiteLine;
         select(white);
@@ -67,5 +61,24 @@ public class toolSelector : MonoBehaviour
         blue.interactable = true;
         purple.interactable = true;
         button.interactable = false;
+    }
+
+    public int getColorInt(){
+        if(lineMaterial == redLine){
+            return 0;
+        }if(lineMaterial == orangeLine){
+            return 1;
+        }if(lineMaterial == yellowLine){
+            return 2;
+        }if(lineMaterial == whiteLine){
+            return 3;
+        }if(lineMaterial == blueLine){
+            return 4;
+        }if(lineMaterial == greenLine){
+            return 5;
+        }if(lineMaterial == purpleLine){
+            return 6;
+        }
+        return 0;
     }
 }

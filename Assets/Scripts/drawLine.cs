@@ -8,9 +8,12 @@ public class drawLine : MonoBehaviour
     public GameObject line;
     private List<GameObject> musicLines = new List<GameObject>();
 
+    public toolSelector toolSelect;
+
     public void startLine(){
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         musicLines.Add(Instantiate(line));
+        musicLines.Last().GetComponent<lineScript>().colorInt = toolSelect.getColorInt();
     }
 
     public void finishLine(){
@@ -45,5 +48,6 @@ public class drawLine : MonoBehaviour
         musicLines.RemoveAt(n);
     }
 
+    
 
 }
