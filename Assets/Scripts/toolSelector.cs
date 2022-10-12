@@ -30,23 +30,41 @@ public class toolSelector : MonoBehaviour
 
     void WhiteClick() {
         lineMaterial = whiteLine;
+        select(white);
     }
     void RedClick() {
         lineMaterial = redLine;
+        select(red);
     }
     void OrangeClick() {
         lineMaterial = orangeLine;
+        select(orange);
     }
     void YellowClick() {
         lineMaterial = yellowLine;
+        select(yellow);
     }
     void GreenClick() {
         lineMaterial = greenLine;
+        select(green);
     }
     void BlueClick() {
         lineMaterial = blueLine;
+        select(blue);
     }
     void PurpleClick() {
         lineMaterial = purpleLine;
+        select(purple);
+    }
+
+    void select(Button button) {
+        white.interactable = true;
+        red.interactable = true;
+        orange.interactable = true;
+        yellow.interactable = true;
+        green.interactable = true;
+        blue.interactable = true;
+        purple.interactable = true;
+        button.interactable = false;
     }
 }
