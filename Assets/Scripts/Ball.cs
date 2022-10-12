@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public AudioSource sound;
+    // public AudioSource sound;
     public AudioClip[] allKeys;
     public AudioClip[] minorKey;
     public AudioClip[] majorKey;
@@ -18,6 +18,8 @@ public class Ball : MonoBehaviour
     private double maxX;
     private double minY;
     private double maxY;
+
+    private ArrayList audioSources;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +32,7 @@ public class Ball : MonoBehaviour
         minY = -cameraBounds.y;
         minX = -cameraBounds.x;
 
+        audioSources = new ArrayList();
     }
 
     void Update()
@@ -38,10 +41,19 @@ public class Ball : MonoBehaviour
         double xPos = this.transform.position.x;
         double yPos = this.transform.position.y;
 
+        bool playing = false;
+        foreach(AudioSource audioSource in audioSources){
+            if(audioSource.isPlaying){
+                playing = true;
+                break;
+            }
+        }
+
         if(minY > yPos || maxY < yPos || minX > xPos || maxX < xPos){
-            if(!sound.isPlaying){
+            if(!playing){
                 Destroy(gameObject);
             }
+            
         }
     }
     
@@ -69,9 +81,9 @@ public class Ball : MonoBehaviour
         }
 
         double p = (matPos+2) / 5.0;
-        this.sound.pitch = (float)p;
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSources.Add(audioSource);
         audioSource.clip = audioClips[velocityArrValue];
         audioSource.pitch = (float)p;
         audioSource.Play();
