@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     public AudioClip[] majorKey;
     public AudioClip[] harmonic;
 
+
     private float lastSound = 0.0f;
     private float delay = 0.05f;
 
@@ -33,14 +34,15 @@ public class Ball : MonoBehaviour
 
     }
 
+    //Destroys this object if it is offscreen and it isn't playing sound
     void Update()
-    {
-        
+    {        
         double xPos = this.transform.position.x;
         double yPos = this.transform.position.y;
 
         bool playing = false;
-        foreach(AudioSource audioSource in GetComponents<AudioSource>()){
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        foreach(AudioSource audioSource in audioSources){
             if(audioSource.isPlaying){
                 playing = true;
                 break;
@@ -57,6 +59,7 @@ public class Ball : MonoBehaviour
         }
     }
     
+    //checks if the other colliding object is a line, if so plays a sound assuming a few conditions are met, i.e. velocity, delay
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.layer != 6){
             return;
@@ -68,8 +71,9 @@ public class Ball : MonoBehaviour
         }
     }
 
-
+    //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
     private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
+        
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 170)*(1.0/7.0) + (velocity/170)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
@@ -81,14 +85,14 @@ public class Ball : MonoBehaviour
         }
 
         double p = (matPos+3) / 6.0;
+        double v = 1- (.2 + (p-1)/2.0);
+        v = (v>1) ? 1 : v;
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
         audioSource.pitch = (float)p;
-        double v = 1- (.2 + (p-1)/2);
-        v = (v>1) ? 1 : v;
         audioSource.volume = (float)v;
-
+        
         audioSource.Play();
     }
 }

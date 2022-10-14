@@ -18,6 +18,7 @@ public class UIHandler : MonoBehaviour
         UILayer = LayerMask.NameToLayer("UI");
     }
 
+    //calls the relevant scripts each frame
     void Update(){
         if(Input.GetMouseButton(0) && IsPointerOverUIElement()) {
             isButtonDownOnUI = true;
@@ -38,6 +39,7 @@ public class UIHandler : MonoBehaviour
         }
         Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
     }
+    //Destroys all balls lines and ball spawners
     void ResetOnClick(){
             GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
             foreach (GameObject ball in allBalls) {
