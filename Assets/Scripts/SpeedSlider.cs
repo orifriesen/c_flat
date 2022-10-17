@@ -13,6 +13,6 @@ public class SpeedSlider : MonoBehaviour
         ballSpawner = bs;
     }
     private void Update() {
-        ballSpawner.delay = (float)(this.gameObject.GetComponent<Slider>().value + .1)*2.5;
+        ballSpawner.delay = (float)((this.gameObject.GetComponent<Slider>().value + .1)*2.5);
     }
 }
