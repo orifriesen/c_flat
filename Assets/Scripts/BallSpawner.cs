@@ -6,6 +6,11 @@ public class BallSpawner : MonoBehaviour
     public float delay;
     public GameObject ball;
 
+    public GameObject trashButtonExample;
+    public GameObject speedSliderExample;
+
+    private GameObject trashButton;
+    private GameObject speedSlider;
 
     //spawns a ball every delay seconds
     void Update()
@@ -22,7 +27,16 @@ public class BallSpawner : MonoBehaviour
             }    
 
             lastSpawn=Time.time;
+        }
     }
+
+    public void CreateButtons(){
+        // GameObject trashButton = Instantiate(trashButtonExample, this.transform.localPosition, this.transform.localRotation);
+        // trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
+        
+
+        // GameObject speedSlider = Instantiate(speedSliderExample, this.transform.localPosition, this.transform.localRotation);
+        // speedSlider.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
     }
 
 }

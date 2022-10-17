@@ -12,6 +12,7 @@ public class UIHandler : MonoBehaviour
     private int UILayer;
     private bool isButtonDownOnUI = false;
     
+
     void Start(){
         resetButton.onClick.AddListener(ResetOnClick);
         lineDrawer = GetComponent<drawLine>();
@@ -32,7 +33,17 @@ public class UIHandler : MonoBehaviour
         }else if(Input.GetMouseButton(0) && !isButtonDownOnUI){
             lineDrawer.finishLine();
         }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
-            destroyIfAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lineDrawer.destroyIfAt(pos);
+
+
+            GameObject[] tempUI = GameObject.FindGameObjectsWithTag("TempUI");
+            foreach(GameObject temp in tempUI){
+                Destroy(temp);
+            }
+
+            createUIIfAt(pos);
+
         }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
             Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
@@ -45,10 +56,17 @@ public class UIHandler : MonoBehaviour
             foreach (GameObject ball in allBalls) {
                 Destroy(ball);
             }
+
             GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
             foreach (GameObject bs in allBallSpawners){
                 Destroy(bs);
             }
+
+            GameObject[] tempUI = GameObject.FindGameObjectsWithTag("Ball");
+            foreach(GameObject temp in tempUI){
+                Destroy(temp);
+            }
+
             lineDrawer.DestroyAll();   
 	}
     
@@ -82,15 +100,12 @@ public class UIHandler : MonoBehaviour
         return raycastResults;
     }
 
-    void destroyIfAt(Vector2 pos){
-        lineDrawer.destroyIfAt(pos);
-        destroyBallSpawnerIfAt(pos);
-    }
-    void destroyBallSpawnerIfAt(Vector2 pos){
+    
+    void createUIIfAt(Vector2 pos){
         GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
             foreach (GameObject bs in allBallSpawners){
                 if(Vector3.Distance(pos, bs.transform.position) < .30){
-                    Destroy(bs);
+                    bs.GetComponent<BallSpawner>().CreateButtons();
                     break;
                 }
             }

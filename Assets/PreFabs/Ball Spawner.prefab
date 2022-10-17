@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   ball: {fileID: 589088346345296335, guid: e03bf85297a0e80489b021ff5f3746ba, type: 3}
+  trashButtonExample: {fileID: 5640646328439096853, guid: 28ebaae1c702c5f40b36027dfe18f9ec, type: 3}
+  speedSliderExample: {fileID: 3183321116908265128, guid: 600e5dda1938e2f4a97123357f3c8827, type: 3}
 --- !u!212 &1943256681330663176
 SpriteRenderer:
   m_ObjectHideFlags: 0
