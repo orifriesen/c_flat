@@ -32,17 +32,20 @@ public class BallSpawner : MonoBehaviour
     }
 
     public void CreateButtons(){
-        Vector3 pos = this.transform.position;
+        Vector3 pos = this.transform.position; 
+        float maxY = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y; 
+        float yOffset = (this.transform.position.y + 0.5f > maxY) ? -.50f : .50f;
+
 
         GameObject speedSlider = Instantiate(speedSliderExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
         speedSlider.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
-        speedSlider.transform.position = new Vector2((float)(pos.x -.5), (float)(pos.y +0.50));
+        speedSlider.transform.position = new Vector2(pos.x -.5f, pos.y+yOffset);
         speedSlider.GetComponent<SpeedSlider>().SetBallSpawner(this);
         speedSlider.GetComponent<SpeedSlider>().setValFromDelay(delay);
 
         GameObject trashButton = Instantiate(trashButtonExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
         trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
-        trashButton.transform.position = new Vector2((float)(pos.x +0.50), (float)(pos.y +0.50));
+        trashButton.transform.position = new Vector2(pos.x +0.50f, pos.y+yOffset);
         trashButton.GetComponent<TrashButton>().SetBallSpawner(this.gameObject);
         trashButton.GetComponent<TrashButton>().setSlider(speedSlider);
     }
