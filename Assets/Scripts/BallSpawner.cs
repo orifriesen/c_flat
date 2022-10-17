@@ -39,9 +39,9 @@ public class BallSpawner : MonoBehaviour
         float yOffset = (pos.y + 0.5f > maxY) ? -.50f : .50f;
         float xOffset = 0;
         if(pos.x +.75f > maxX){
-            xOffset = (maxX-pos.x) -1f;
+            xOffset = (maxX-pos.x) -.9f;
         }else if(pos.x -.75f < minX){
-            xOffset = (minX-pos.x) +1f;
+            xOffset = (minX-pos.x) +1.3f;
         }
 
         GameObject speedSlider = Instantiate(speedSliderExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
