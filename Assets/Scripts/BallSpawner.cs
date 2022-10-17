@@ -14,7 +14,8 @@ public class BallSpawner : MonoBehaviour
 
     //spawns a ball every delay seconds
     void Update()
-    {
+    {   
+
         if(Time.time > delay + lastSpawn){
 
             GameObject newBall = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
@@ -36,7 +37,8 @@ public class BallSpawner : MonoBehaviour
         GameObject speedSlider = Instantiate(speedSliderExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
         speedSlider.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
         speedSlider.transform.position = new Vector2((float)(pos.x -.5), (float)(pos.y +0.50));
-
+        speedSlider.GetComponent<SpeedSlider>().SetBallSpawner(this);
+        speedSlider.GetComponent<SpeedSlider>().setValFromDelay(delay);
 
         GameObject trashButton = Instantiate(trashButtonExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
         trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
