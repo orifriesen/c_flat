@@ -15,7 +15,7 @@ public class BallSpawner : MonoBehaviour
     //spawns a ball every delay seconds
     void Update()
     {   
-
+        Debug.Log(delay);
         if(Time.time > delay + lastSpawn){
 
             GameObject newBall = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);

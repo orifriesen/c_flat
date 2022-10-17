@@ -18,7 +18,7 @@ public class TrashButton : MonoBehaviour
     }
     private void Trash(){
         Destroy(ballSpawner);
-        Destroy(this.gameObject);
         Destroy(slider);
+        Destroy(this.gameObject);
     }
 }
