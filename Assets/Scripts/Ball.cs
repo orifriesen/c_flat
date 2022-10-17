@@ -45,7 +45,6 @@ public class Ball : MonoBehaviour
         foreach(AudioSource audioSource in audioSources){
             if(audioSource.isPlaying){
                 playing = true;
-                break;
             }else{
                 Destroy(audioSource);
             }
@@ -72,6 +71,7 @@ public class Ball : MonoBehaviour
     }
 
     //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
+    //TODO handling of pitch based on color is ugly
     private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
         
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);

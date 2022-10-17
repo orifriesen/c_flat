@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
+
 
 public class toolSelector : MonoBehaviour
 {
+    //TODO turn this into an array based approach for code neatness
     public Button white, red, orange, yellow, green, blue, purple;
     public Material whiteLine, redLine, orangeLine, yellowLine, greenLine, blueLine, purpleLine;
     public static Material lineMaterial;
@@ -79,6 +79,6 @@ public class toolSelector : MonoBehaviour
         }if(lineMaterial == purpleLine){
             return 6;
         }
-        return 0;
+        throw new Exception("this should'nt happen, toolSelector getColorInt");
     }
 }

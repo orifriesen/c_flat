@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
@@ -8,17 +6,19 @@ public class BallSpawner : MonoBehaviour
     public float delay;
     public GameObject ball;
 
+
+    //spawns a ball every delay seconds
     void Update()
     {
         if(Time.time > delay + lastSpawn){
 
-            GameObject b = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
+            GameObject newBall = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
             
 
             GameObject[] otherBalls = GameObject.FindGameObjectsWithTag("Ball");
 
             foreach (GameObject ball in otherBalls) {
-                Physics2D.IgnoreCollision(ball.GetComponent<Collider2D>(), b.GetComponent<Collider2D>()); 
+                Physics2D.IgnoreCollision(newBall.GetComponent<Collider2D>(), ball.GetComponent<Collider2D>()); 
             }    
 
             lastSpawn=Time.time;
