@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BallSpawner : MonoBehaviour
 {
     private float lastSpawn = 0.0f;
@@ -9,8 +9,8 @@ public class BallSpawner : MonoBehaviour
     public GameObject trashButtonExample;
     public GameObject speedSliderExample;
 
-    private GameObject trashButton;
-    private GameObject speedSlider;
+    private Button trashButton;
+    private Slider speedSlider;
 
     //spawns a ball every delay seconds
     void Update()
@@ -31,12 +31,19 @@ public class BallSpawner : MonoBehaviour
     }
 
     public void CreateButtons(){
-        // GameObject trashButton = Instantiate(trashButtonExample, this.transform.localPosition, this.transform.localRotation);
-        // trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
-        
+        Vector3 pos = this.transform.position;
 
-        // GameObject speedSlider = Instantiate(speedSliderExample, this.transform.localPosition, this.transform.localRotation);
-        // speedSlider.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
+        GameObject speedSlider = Instantiate(speedSliderExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
+        speedSlider.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
+        speedSlider.transform.position = new Vector2((float)(pos.x -.5), (float)(pos.y +0.50));
+
+
+        GameObject trashButton = Instantiate(trashButtonExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
+        trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
+        trashButton.transform.position = new Vector2((float)(pos.x +0.50), (float)(pos.y +0.50));
+        trashButton.GetComponent<TrashButton>().SetBallSpawner(this.gameObject);
+        trashButton.GetComponent<TrashButton>().setSlider(speedSlider);
     }
+
 
 }

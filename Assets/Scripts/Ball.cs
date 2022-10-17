@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
 
     private float lastSound = 0.0f;
     private float delay = 0.05f;
-
+    private float minVelocity = 0.05f;
     private double minX;
     private double maxX;
     private double minY;
@@ -35,6 +35,7 @@ public class Ball : MonoBehaviour
     }
 
     //Destroys this object if it is offscreen and it isn't playing sound
+    //Also destroys each audio source which isn't playing
     void Update()
     {        
         double xPos = this.transform.position.x;
@@ -50,12 +51,10 @@ public class Ball : MonoBehaviour
             }
         }
 
-        if(minY > yPos || maxY < yPos || minX > xPos || maxX < xPos){
-            if(!playing){
+        if(!playing && (minY > yPos || maxY < yPos || minX > xPos || maxX < xPos)){
                 Destroy(gameObject);
-            }
-            
         }
+
     }
     
     //checks if the other colliding object is a line, if so plays a sound assuming a few conditions are met, i.e. velocity, delay
@@ -64,7 +63,7 @@ public class Ball : MonoBehaviour
             return;
         }
     
-        if(Time.time > delay + lastSound && Vector2.SqrMagnitude(this.rb.velocity) > .05f){
+        if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
             playClipOnVelocity(harmonic, other.gameObject.GetComponent<lineScript>().colorInt);
             lastSound = Time.time;
         }

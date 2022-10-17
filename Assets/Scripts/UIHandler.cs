@@ -37,10 +37,7 @@ public class UIHandler : MonoBehaviour
             lineDrawer.destroyIfAt(pos);
 
 
-            GameObject[] tempUI = GameObject.FindGameObjectsWithTag("TempUI");
-            foreach(GameObject temp in tempUI){
-                Destroy(temp);
-            }
+            destroyAllOfTag("TempUI");
 
             createUIIfAt(pos);
 
@@ -52,20 +49,9 @@ public class UIHandler : MonoBehaviour
     }
     //Destroys all balls lines and ball spawners
     void ResetOnClick(){
-            GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
-            foreach (GameObject ball in allBalls) {
-                Destroy(ball);
-            }
-
-            GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
-            foreach (GameObject bs in allBallSpawners){
-                Destroy(bs);
-            }
-
-            GameObject[] tempUI = GameObject.FindGameObjectsWithTag("Ball");
-            foreach(GameObject temp in tempUI){
-                Destroy(temp);
-            }
+            destroyAllOfTag("Ball");
+            destroyAllOfTag("BallSpawner");
+            destroyAllOfTag("TempUI");
 
             lineDrawer.DestroyAll();   
 	}
@@ -108,6 +94,13 @@ public class UIHandler : MonoBehaviour
                     bs.GetComponent<BallSpawner>().CreateButtons();
                     break;
                 }
+            }
+    }
+
+    void destroyAllOfTag(string tag){
+        GameObject[] lst = GameObject.FindGameObjectsWithTag(tag);
+            foreach(GameObject gameObject in lst){
+                Destroy(gameObject);
             }
     }
 }
