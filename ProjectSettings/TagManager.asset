@@ -8,6 +8,7 @@ TagManager:
   - BallSpawner
   - MainCanvas
   - TempUI
+  - line
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
-    // public AudioSource sound;
+    public AudioSource sound;
     public AudioClip[] allKeys;
     public AudioClip[] minorKey;
     public AudioClip[] majorKey;
@@ -56,10 +56,10 @@ public class Ball : MonoBehaviour
         }
 
     }
-    
+    //gameObject.layer != 6 && 
     //checks if the other colliding object is a line, if so plays a sound assuming a few conditions are met, i.e. velocity, delay
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.layer != 6){
+        if(gameObject.layer !=6){
             return;
         }
     
