@@ -8,6 +8,7 @@ public class UIHandler : MonoBehaviour
     public Button resetButton;
     public BallSpawner ballSpawner;
     public Slider gravitySlider;
+    public Toggle playButton;
     private drawLine lineDrawer;
     private int UILayer;
     private bool isButtonDownOnUI = false;
@@ -46,6 +47,13 @@ public class UIHandler : MonoBehaviour
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
         }
         Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
+
+        if(playButton.isOn) {
+            Time.timeScale = 1;
+        }
+        else {
+            Time.timeScale = 0;
+        }
     }
     //Destroys all balls lines and ball spawners
     void ResetOnClick(){
