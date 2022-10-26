@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5673487124537941255}
   - component: {fileID: 2056030868914048851}
   - component: {fileID: 3355585227090333805}
-  - component: {fileID: -2488740983146170408}
   m_Layer: 6
   m_Name: line
   m_TagString: line
@@ -170,19 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorInt: 0
---- !u!114 &-2488740983146170408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6951144630429341995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb71c111e51f694d95690bf1db83b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionParticleSystem: {fileID: 0}
 --- !u!1 &7382803560374634252
 GameObject:
   m_ObjectHideFlags: 0
