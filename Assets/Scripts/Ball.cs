@@ -77,8 +77,10 @@ public class Ball : MonoBehaviour
     private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
         
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        double velocityNormalized = Mathf.Log(velocity, 170)*(1.0/7.0) + (velocity/170)*(6.0/7.0);
+        double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
+
+        velocityArrValue = (int)(velocityArrValue / 3.0 * (double)matPos);
 
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
@@ -86,14 +88,15 @@ public class Ball : MonoBehaviour
             velocityArrValue = 0;
         }
 
-        double p = (matPos+3) / 6.0;
-        double v = 1- (.2 + (p-1)/2.0);
-        v = (v>1) ? 1 : v;
-
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
-        audioSource.pitch = (float)p;
-        audioSource.volume = (float)v;
+
+
+        // double p = (matPos+3) / 6.0;
+        // double v = 1- (.2 + (p-1)/2.0);
+        // v = (v>1) ? 1 : v;
+        // audioSource.pitch = (float)p;
+        // audioSource.volume = (float)v;
         
         audioSource.Play();
     }
