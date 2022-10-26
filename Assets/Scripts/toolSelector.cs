@@ -18,8 +18,8 @@ public class toolSelector : MonoBehaviour
         piano1.onClick.AddListener(Piano1Click);
         piano2.onClick.AddListener(Piano2Click);
         piano3.onClick.AddListener(Piano3Click);
-        lineMaterial = piano1m;
-        piano1.interactable = false;
+        lineMaterial = piano2m;
+        piano2.interactable = false;
     }
 
     void Guitar1Click() {
@@ -58,19 +58,36 @@ public class toolSelector : MonoBehaviour
     }
 
     public int getColorInt(){
-        if(lineMaterial == guitar1){
-            return 0;
-        }if(lineMaterial == guitar2){
-            return 1;
-        }if(lineMaterial == guitar3){
+        if(lineMaterial == guitar1m){
             return 2;
-        }if(lineMaterial == piano1){
+        }if(lineMaterial == guitar2m){
             return 3;
-        }if(lineMaterial == piano2){
+        }if(lineMaterial == guitar3m){
             return 4;
-        }if(lineMaterial == piano3){
-            return 5;
+        }if(lineMaterial == piano1m){
+            return 2;
+        }if(lineMaterial == piano2m){
+            return 3;
+        }if(lineMaterial == piano3m){
+            return 4;
         }
-        throw new Exception("this should'nt happen, toolSelector getColorInt");
+        throw new Exception("this should'nt happen, toolSelector getColorInt()");
+    }
+
+    public Color getColor(){
+        if(lineMaterial == guitar1m){
+            return guitar1.GetComponent<Image>().color;
+        }if(lineMaterial == guitar2m){
+            return guitar2.GetComponent<Image>().color;;
+        }if(lineMaterial == guitar3m){
+            return guitar3.GetComponent<Image>().color;;
+        }if(lineMaterial == piano1m){
+            return piano1.GetComponent<Image>().color;;
+        }if(lineMaterial == piano2m){
+            return piano2.GetComponent<Image>().color;;
+        }if(lineMaterial == piano3m){
+            return piano3.GetComponent<Image>().color;;
+        }
+        throw new Exception("this should'nt happen, toolSelector getColor()");
     }
 }

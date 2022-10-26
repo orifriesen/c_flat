@@ -5,4 +5,5 @@ using UnityEngine;
 public class lineScript : MonoBehaviour
 {
     public int colorInt;
+    public Color color;
 }

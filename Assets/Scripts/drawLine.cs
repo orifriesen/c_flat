@@ -15,6 +15,7 @@ public class drawLine : MonoBehaviour
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         musicLines.Add(Instantiate(line));
         musicLines.Last().GetComponent<lineScript>().colorInt = toolSelect.getColorInt();
+        musicLines.Last().GetComponent<lineScript>().color = toolSelect.getColor();
     }
 
     //finishes it

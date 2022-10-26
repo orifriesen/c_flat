@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     public AudioClip[] majorKey;
     public AudioClip[] harmonic;
 
-
+    private ParticleSystem.MainModule ps;
     private float lastSound = 0.0f;
     private float delay = 0.05f;
     private float minVelocity = 0.05f;
@@ -21,7 +21,8 @@ public class Ball : MonoBehaviour
     private double maxY;
 
     void Start()
-    {
+    {   
+        ps = GetComponent<ParticleSystem>().main;
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
@@ -62,7 +63,9 @@ public class Ball : MonoBehaviour
         // if(gameObject.layer !=6){
         //     return;
         // }
-    
+
+        ps.startColor = other.gameObject.GetComponent<lineScript>().color;
+
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
             playClipOnVelocity(harmonic, other.gameObject.GetComponent<lineScript>().colorInt);
             lastSound = Time.time;
