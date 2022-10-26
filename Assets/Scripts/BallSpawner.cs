@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 public class BallSpawner : MonoBehaviour
 {
     private float lastSpawn = 0.0f;
@@ -51,6 +52,9 @@ public class BallSpawner : MonoBehaviour
         speedSlider.GetComponent<SpeedSlider>().setValFromDelay(delay);
 
         GameObject trashButton = Instantiate(trashButtonExample, Camera.main.ScreenToWorldPoint(this.transform.position), this.transform.localRotation);
+         foreach (Transform child in trashButton.transform) {
+            Destroy(child.gameObject);
+        }
         trashButton.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
         trashButton.transform.position = new Vector2(pos.x +0.50f+xOffset, pos.y+yOffset);
         trashButton.GetComponent<TrashButton>().SetBallSpawner(this.gameObject);
