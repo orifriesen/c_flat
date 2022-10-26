@@ -36,12 +36,8 @@ public class UIHandler : MonoBehaviour
         }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             lineDrawer.destroyIfAt(pos);
-
-
             destroyAllOfTag("TempUI");
-
             createUIIfAt(pos);
-
         }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
             Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
@@ -60,7 +56,6 @@ public class UIHandler : MonoBehaviour
             destroyAllOfTag("Ball");
             destroyAllOfTag("BallSpawner");
             destroyAllOfTag("TempUI");
-
             lineDrawer.DestroyAll();   
 	}
     
