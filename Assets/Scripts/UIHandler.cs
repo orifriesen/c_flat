@@ -48,6 +48,13 @@ public class UIHandler : MonoBehaviour
         }
         Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
 
+        if(Input.GetKeyDown(KeyCode.Space) && playButton.isOn) {
+            playButton.isOn = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && !playButton.isOn) {
+            playButton.isOn = true;
+        }
+
         if(playButton.isOn) {
             Time.timeScale = 1;
         }
