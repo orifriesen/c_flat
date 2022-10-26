@@ -57,7 +57,7 @@ public class toolSelector : MonoBehaviour
         button.interactable = false;
     }
 
-    public int getColorInt(){
+    public double getColorInt(){
         if(lineMaterial == guitar1m){
             return 2;
         }if(lineMaterial == guitar2m){
@@ -65,11 +65,11 @@ public class toolSelector : MonoBehaviour
         }if(lineMaterial == guitar3m){
             return 4;
         }if(lineMaterial == piano1m){
-            return 2;
+            return 1.5;
         }if(lineMaterial == piano2m){
             return 3;
         }if(lineMaterial == piano3m){
-            return 4;
+            return 4.5;
         }
         throw new Exception("this should'nt happen, toolSelector getColorInt()");
     }

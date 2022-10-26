@@ -74,13 +74,13 @@ public class Ball : MonoBehaviour
 
     //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
     //TODO handling of pitch based on color is ugly
-    private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
+    private void playClipOnVelocity(AudioClip[] audioClips, double matPos){
         
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
 
-        velocityArrValue = (int)(velocityArrValue / 3.0 * (double)matPos);
+        velocityArrValue = (int)(velocityArrValue / 3.0 * matPos);
 
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
