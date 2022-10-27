@@ -65,11 +65,11 @@ public class toolSelector : MonoBehaviour
         }if(lineMaterial == guitar3m){
             return 4;
         }if(lineMaterial == piano1m){
-            return 1.5;
+            return 1.4;
         }if(lineMaterial == piano2m){
             return 3;
         }if(lineMaterial == piano3m){
-            return 4.5;
+            return 4.6;
         }
         throw new Exception("this should'nt happen, toolSelector getColorInt()");
     }
