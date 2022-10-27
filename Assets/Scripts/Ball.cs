@@ -60,7 +60,6 @@ public class Ball : MonoBehaviour
     //gameObject.layer != 6 && 
     //checks if the other colliding object is a line, if so plays a sound assuming a few conditions are met, i.e. velocity, delay
     private void OnCollisionEnter2D(Collision2D other) {
-
         ps.startColor = other.gameObject.GetComponent<lineScript>().color;
 
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
