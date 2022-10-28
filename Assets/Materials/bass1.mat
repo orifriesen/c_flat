@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: guitar2
+  m_Name: bass1
   m_Shader: {fileID: -6465566751694194690, guid: 411b7fe10e4b23942ae10bf190264dab, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -122,9 +122,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.03137255, g: 0, b: 0.9607844, a: 1}
-    - _Color: {r: 0.32941177, g: 0.30588236, b: 1, a: 1}
+    - _Color: {r: 0.8078432, g: 0.03137255, b: 0.9960785, a: 1}
     - _EmissionColor: {r: 0.002428216, g: 0, b: 0.913099, a: 1}
-    - _GlowColor: {r: 0.32926366, g: 0.3066038, b: 1, a: 0}
+    - _GlowColor: {r: 0.8078432, g: 0.03137255, b: 0.9960785, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5956087732482902523

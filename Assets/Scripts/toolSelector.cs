@@ -6,8 +6,8 @@ using System;
 public class toolSelector : MonoBehaviour
 {
     //TODO turn this into an array based approach for code neatness
-    public Button guitar1, guitar2, guitar3, piano1, piano2, piano3;
-    public Material guitar1m, guitar2m, guitar3m, piano1m, piano2m, piano3m;
+    public Button guitar1, guitar2, guitar3, piano1, piano2, piano3, bass1, bass2, bass3;
+    public Material guitar1m, guitar2m, guitar3m, piano1m, piano2m, piano3m, bass1m, bass2m, bass3m;
     public static Material lineMaterial;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,9 @@ public class toolSelector : MonoBehaviour
         piano1.onClick.AddListener(Piano1Click);
         piano2.onClick.AddListener(Piano2Click);
         piano3.onClick.AddListener(Piano3Click);
+        bass1.onClick.AddListener(Bass1Click);
+        bass2.onClick.AddListener(Bass2Click);
+        bass3.onClick.AddListener(Bass3Click);
         lineMaterial = piano2m;
         piano2.interactable = false;
     }
@@ -46,6 +49,18 @@ public class toolSelector : MonoBehaviour
         lineMaterial = piano3m;
         select(piano3);
     }
+    void Bass1Click() {
+        lineMaterial = bass1m;
+        select(bass1);
+    }
+    void Bass2Click() {
+        lineMaterial = bass2m;
+        select(bass2);
+    }
+    void Bass3Click() {
+        lineMaterial = bass3m;
+        select(bass3);
+    }
 
     void select(Button button) {
         guitar1.interactable = true;
@@ -54,6 +69,9 @@ public class toolSelector : MonoBehaviour
         piano1.interactable = true;
         piano2.interactable = true;
         piano3.interactable = true;
+        bass1.interactable = true;
+        bass2.interactable = true;
+        bass3.interactable = true;
         button.interactable = false;
     }
 
@@ -87,6 +105,12 @@ public class toolSelector : MonoBehaviour
             return piano2.GetComponent<Image>().color;;
         }if(lineMaterial == piano3m){
             return piano3.GetComponent<Image>().color;;
+        }if(lineMaterial == bass1m){
+            return bass1.GetComponent<Image>().color;;
+        }if(lineMaterial == bass2m){
+            return bass2.GetComponent<Image>().color;;
+        }if(lineMaterial == bass3m){
+            return bass3.GetComponent<Image>().color;;
         }
         throw new Exception("this should'nt happen, toolSelector getColor()");
     }

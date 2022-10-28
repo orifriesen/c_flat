@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5933464821782598700
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: guitar2
+  m_Name: bass3
   m_Shader: {fileID: -6465566751694194690, guid: 411b7fe10e4b23942ae10bf190264dab, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -121,13 +108,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.03137255, g: 0, b: 0.9607844, a: 1}
-    - _Color: {r: 0.32941177, g: 0.30588236, b: 1, a: 1}
-    - _EmissionColor: {r: 0.002428216, g: 0, b: 0.913099, a: 1}
-    - _GlowColor: {r: 0.32926366, g: 0.3066038, b: 1, a: 0}
+    - _BaseColor: {r: 0.80392164, g: 0.80392164, b: 0.93725497, a: 1}
+    - _Color: {r: 1, g: 0.3537736, b: 0.9299766, a: 1}
+    - _EmissionColor: {r: 0.6839622, g: 0.6839622, b: 1, a: 1}
+    - _GlowColor: {r: 1, g: 0.3529412, b: 0.9294118, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5956087732482902523
+--- !u!114 &5226068217192176047
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
