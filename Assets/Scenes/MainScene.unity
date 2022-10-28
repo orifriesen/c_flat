@@ -460,7 +460,7 @@ MonoBehaviour:
   piano2: {fileID: 29665662}
   piano3: {fileID: 619181175}
   guitar1m: {fileID: 2100000, guid: 8413e4cf511e4f54eb4c9d651c381f5e, type: 2}
-  guitar2m: {fileID: 2100000, guid: 7cfcbd2e10d7d7946906f1e59b50bd2e, type: 2}
+  guitar2m: {fileID: 2100000, guid: 1528f17732f8c7746bd125883fbc1c06, type: 2}
   guitar3m: {fileID: 2100000, guid: f787148b5fa2e1f488b12b7156cd5f03, type: 2}
   piano1m: {fileID: 2100000, guid: 6670ecaad9ea9f4488cc1952bb042415, type: 2}
   piano2m: {fileID: 2100000, guid: 6408930610d67604080740089fb06a1c, type: 2}
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
