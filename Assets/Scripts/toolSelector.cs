@@ -18,16 +18,11 @@ public class toolSelector : MonoBehaviour
         piano1.onClick.AddListener(Piano1Click);
         piano2.onClick.AddListener(Piano2Click);
         piano3.onClick.AddListener(Piano3Click);
-<<<<<<< Updated upstream
-        lineMaterial = piano1m;
-        piano1.interactable = false;
-=======
         bass1.onClick.AddListener(Bass1Click);
         bass2.onClick.AddListener(Bass2Click);
         bass3.onClick.AddListener(Bass3Click);
         lineMaterial = piano2m;
         piano2.interactable = false;
->>>>>>> Stashed changes
     }
 
     void Guitar1Click() {
@@ -80,21 +75,13 @@ public class toolSelector : MonoBehaviour
         button.interactable = false;
     }
 
-    public int getColorInt(){
-        if(lineMaterial == guitar1){
-            return 0;
-        }if(lineMaterial == guitar2){
-            return 1;
-        }if(lineMaterial == guitar3){
+    public double getColorInt(){
+        if(lineMaterial == guitar1m){
             return 2;
-        }if(lineMaterial == piano1){
+        }if(lineMaterial == guitar2m){
             return 3;
-        }if(lineMaterial == piano2){
+        }if(lineMaterial == guitar3m){
             return 4;
-<<<<<<< Updated upstream
-        }if(lineMaterial == piano3){
-            return 5;
-=======
         }if(lineMaterial == piano1m){
             return 1.4;
         }if(lineMaterial == piano2m){
@@ -124,8 +111,7 @@ public class toolSelector : MonoBehaviour
             return bass2.GetComponent<Image>().color;;
         }if(lineMaterial == bass3m){
             return bass3.GetComponent<Image>().color;;
->>>>>>> Stashed changes
         }
-        throw new Exception("this should'nt happen, toolSelector getColorInt");
+        throw new Exception("this should'nt happen, toolSelector getColor()");
     }
 }

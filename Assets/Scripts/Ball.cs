@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     public AudioClip[] majorKey;
     public AudioClip[] harmonic;
 
-
+    private ParticleSystem.MainModule ps;
     private float lastSound = 0.0f;
     private float delay = 0.05f;
     private float minVelocity = 0.05f;
@@ -21,7 +21,8 @@ public class Ball : MonoBehaviour
     private double maxY;
 
     void Start()
-    {
+    {   
+        ps = GetComponent<ParticleSystem>().main;
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
@@ -59,10 +60,8 @@ public class Ball : MonoBehaviour
     //gameObject.layer != 6 && 
     //checks if the other colliding object is a line, if so plays a sound assuming a few conditions are met, i.e. velocity, delay
     private void OnCollisionEnter2D(Collision2D other) {
-        // if(gameObject.layer !=6){
-        //     return;
-        // }
-    
+        ps.startColor = other.gameObject.GetComponent<lineScript>().color;
+
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
             playClipOnVelocity(harmonic, other.gameObject.GetComponent<lineScript>().colorInt);
             lastSound = Time.time;
@@ -71,11 +70,13 @@ public class Ball : MonoBehaviour
 
     //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
     //TODO handling of pitch based on color is ugly
-    private void playClipOnVelocity(AudioClip[] audioClips, int matPos){
+    private void playClipOnVelocity(AudioClip[] audioClips, double matPos){
         
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
-        double velocityNormalized = Mathf.Log(velocity, 170)*(1.0/7.0) + (velocity/170)*(6.0/7.0);
+        double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
+
+        velocityArrValue = (int)(velocityArrValue / 3.0 * matPos);
 
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
@@ -83,14 +84,15 @@ public class Ball : MonoBehaviour
             velocityArrValue = 0;
         }
 
-        double p = (matPos+3) / 6.0;
-        double v = 1- (.2 + (p-1)/2.0);
-        v = (v>1) ? 1 : v;
-
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
-        audioSource.pitch = (float)p;
-        audioSource.volume = (float)v;
+
+
+        // double p = (matPos+3) / 6.0;
+        // double v = 1- (.2 + (p-1)/2.0);
+        // v = (v>1) ? 1 : v;
+        // audioSource.pitch = (float)p;
+        // audioSource.volume = (float)v;
         
         audioSource.Play();
     }
