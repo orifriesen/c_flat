@@ -74,19 +74,25 @@ public class toolSelector : MonoBehaviour
         bass3.interactable = true;
         button.interactable = false;
     }
-
+    //yes ik these are awful code lol
     public double getColorInt(){
         if(lineMaterial == guitar1m){
-            return 2;
+            return 1.4;
         }if(lineMaterial == guitar2m){
             return 3;
         }if(lineMaterial == guitar3m){
-            return 4;
+            return 4.6;
         }if(lineMaterial == piano1m){
             return 1.4;
         }if(lineMaterial == piano2m){
             return 3;
         }if(lineMaterial == piano3m){
+            return 4.6;
+        }if(lineMaterial == bass1m){
+            return 1.4;
+        }if(lineMaterial == bass2m){
+            return 3;
+        }if(lineMaterial == bass3m){
             return 4.6;
         }
         throw new Exception("this should'nt happen, toolSelector getColorInt()");
@@ -96,21 +102,21 @@ public class toolSelector : MonoBehaviour
         if(lineMaterial == guitar1m){
             return guitar1.GetComponent<Image>().color;
         }if(lineMaterial == guitar2m){
-            return guitar2.GetComponent<Image>().color;;
+            return guitar2.GetComponent<Image>().color;
         }if(lineMaterial == guitar3m){
-            return guitar3.GetComponent<Image>().color;;
+            return guitar3.GetComponent<Image>().color;
         }if(lineMaterial == piano1m){
-            return piano1.GetComponent<Image>().color;;
+            return piano1.GetComponent<Image>().color;
         }if(lineMaterial == piano2m){
-            return piano2.GetComponent<Image>().color;;
+            return piano2.GetComponent<Image>().color;
         }if(lineMaterial == piano3m){
-            return piano3.GetComponent<Image>().color;;
+            return piano3.GetComponent<Image>().color;
         }if(lineMaterial == bass1m){
-            return bass1.GetComponent<Image>().color;;
+            return bass1.GetComponent<Image>().color;
         }if(lineMaterial == bass2m){
-            return bass2.GetComponent<Image>().color;;
+            return bass2.GetComponent<Image>().color;
         }if(lineMaterial == bass3m){
-            return bass3.GetComponent<Image>().color;;
+            return bass3.GetComponent<Image>().color;
         }
         throw new Exception("this should'nt happen, toolSelector getColor()");
     }
