@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 public class UIHandler : MonoBehaviour
 { 
     public Button resetButton;
     public BallSpawner ballSpawner;
     public Slider gravitySlider;
+    public Slider bloomSlider;
     public Toggle playButton;
+    
+    public GameObject VolumeObj;
+    private Volume volume;
     private drawLine lineDrawer;
     private int UILayer;
     private bool isButtonDownOnUI = false;
@@ -16,8 +23,13 @@ public class UIHandler : MonoBehaviour
 
     void Start(){
         resetButton.onClick.AddListener(ResetOnClick);
+
+        bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
+        gravitySlider.onValueChanged.AddListener(delegate {gravityChange();});
+
         lineDrawer = GetComponent<drawLine>();
         UILayer = LayerMask.NameToLayer("UI");
+        volume = VolumeObj.GetComponent<Volume>();
     }
 
     //calls the relevant scripts each frame
@@ -42,7 +54,7 @@ public class UIHandler : MonoBehaviour
             Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
         }
-        Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
+
 
         if(Input.GetKeyDown(KeyCode.Space) && playButton.isOn) {
             playButton.isOn = false;
@@ -53,10 +65,11 @@ public class UIHandler : MonoBehaviour
 
         if(playButton.isOn) {
             Time.timeScale = 1;
-        }
-        else {
+        }else {
             Time.timeScale = 0;
         }
+
+        
     }
     //Destroys all balls lines and ball spawners
     void ResetOnClick(){
@@ -105,6 +118,16 @@ public class UIHandler : MonoBehaviour
                     break;
                 }
             }
+    }
+
+    void bloomChange(){
+        Bloom bloom;
+        volume.profile.TryGet<Bloom>(out bloom);
+        bloom.intensity.value = (Mathf.Pow(bloomSlider.value, 2.3f) * .01f);
+    }
+
+    void gravityChange(){
+        Physics2D.gravity = new Vector3(0, -gravitySlider.value, 0);
     }
 
     void destroyAllOfTag(string tag){
