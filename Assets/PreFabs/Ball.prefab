@@ -207,6 +207,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1e2902d8ca2bdb44d94ec48e72904d3c, type: 3}
   - {fileID: 8300000, guid: 421033618106d6c4584907d7bd1cd185, type: 3}
   - {fileID: 8300000, guid: 63aa41185e4be9848bed6ce598cba5ab, type: 3}
+  guitarSounds:
+  - {fileID: 8300000, guid: be4ca6d75a941a94b8a964f75f57aef2, type: 3}
+  - {fileID: 8300000, guid: 7bba90413b30e1745b85a477f66a967d, type: 3}
+  - {fileID: 8300000, guid: 90a6c88815d6b7140baa096173114ef6, type: 3}
+  - {fileID: 8300000, guid: a101ee7c7a9a72e4182378e6d27e7b6b, type: 3}
+  - {fileID: 8300000, guid: 7741c2f24ded31b43b24ef4655de5212, type: 3}
+  - {fileID: 8300000, guid: 8266966b38fb3084ca3d66338773edc9, type: 3}
 --- !u!198 &4905004989894202860
 ParticleSystem:
   m_ObjectHideFlags: 0

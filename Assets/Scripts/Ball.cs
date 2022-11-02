@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     public AudioClip[] majorKey;
     public AudioClip[] harmonic;
 
+    public AudioClip[] guitarSounds;
     private float lastSound = 0.0f;
     private float delay = 0.05f;
     private float minVelocity = 0.05f;
@@ -61,16 +62,21 @@ public class Ball : MonoBehaviour
         if(!other.gameObject.CompareTag("line")){
             return;
         }
+        
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
-            playClipOnVelocity(harmonic, other.gameObject.GetComponent<lineScript>().colorInt);
+            playClipOnVelocity(other.gameObject.GetComponent<lineScript>().colorInt, other.gameObject.GetComponent<lineScript>().instrumentInt);
             lastSound = Time.time;
         }
     }
 
     //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
     //TODO handling of pitch based on color is ugly
-    private void playClipOnVelocity(AudioClip[] audioClips, double matPos){
-        
+    private void playClipOnVelocity(double matPos, int instrumentInt){
+        AudioClip[] audioClips = null;
+        if(instrumentInt == 1){ audioClips = harmonic; }
+        if(instrumentInt == 2) { audioClips = guitarSounds;}
+        if(instrumentInt == 3) { audioClips = harmonic;}
+
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
         int velocityArrValue = (int) (velocityNormalized * audioClips.Length);
@@ -79,9 +85,12 @@ public class Ball : MonoBehaviour
 
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
-        }else if(velocityArrValue < 0){
+        }
+        
+        if(velocityArrValue < 0){
             velocityArrValue = 0;
         }
+
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];

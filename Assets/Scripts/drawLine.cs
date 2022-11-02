@@ -16,6 +16,7 @@ public class drawLine : MonoBehaviour
         musicLines.Add(Instantiate(line));
         musicLines.Last().GetComponent<lineScript>().colorInt = toolSelect.getColorInt();
         musicLines.Last().GetComponent<lineScript>().color = toolSelect.getColor();
+        musicLines.Last().GetComponent<lineScript>().instrumentInt = toolSelect.getInstrumentVal();
     }
 
     //finishes it

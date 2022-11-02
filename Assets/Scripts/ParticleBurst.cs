@@ -13,11 +13,12 @@ public class ParticleBurst : MonoBehaviour
 
     //Triggers the particle effect if it collides with a line
     void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.CompareTag("line")){
-            ps.startColor = other.gameObject.GetComponent<lineScript>().color;
-            var em = collisionParticleSystem.emission;
-            em.enabled = true;
-            collisionParticleSystem.Play();
+        if(!other.gameObject.CompareTag("line")){
+            return;
         }
+        ps.startColor = other.gameObject.GetComponent<lineScript>().color;
+        var em = collisionParticleSystem.emission;
+        em.enabled = true;
+        collisionParticleSystem.Play();
     }
 }

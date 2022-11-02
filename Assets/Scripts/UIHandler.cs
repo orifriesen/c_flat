@@ -56,17 +56,9 @@ public class UIHandler : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.Space) && playButton.isOn) {
-            playButton.isOn = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && !playButton.isOn) {
-            playButton.isOn = true;
-        }
-
-        if(playButton.isOn) {
-            Time.timeScale = 1;
-        }else {
-            Time.timeScale = 0;
+        if(Input.GetKeyDown(KeyCode.Space)){
+            playButton.isOn = !playButton.isOn;
+            Time.timeScale = playButton.isOn ? 1 : 0;
         }
 
         

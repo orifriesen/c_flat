@@ -120,4 +120,28 @@ public class toolSelector : MonoBehaviour
         }
         throw new Exception("this should'nt happen, toolSelector getColor()");
     }
+
+        public int getInstrumentVal(){
+        if(lineMaterial == guitar1m){
+            return 2;
+        }if(lineMaterial == guitar2m){
+            return 2;
+        }if(lineMaterial == guitar3m){
+            return 2;
+        }if(lineMaterial == piano1m){
+            return 1;
+        }if(lineMaterial == piano2m){
+            return 1;
+        }if(lineMaterial == piano3m){
+            return 1;
+        }if(lineMaterial == bass1m){
+            return 3;
+        }if(lineMaterial == bass2m){
+            return 3;
+        }if(lineMaterial == bass3m){
+            return 3;
+        }
+        throw new Exception("this should'nt happen, toolSelector getInstumentVal()");
+    }
 }
+
