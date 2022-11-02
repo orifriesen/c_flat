@@ -7,7 +7,9 @@ public class HomeScreenScript : MonoBehaviour
 {   
 
     public Button playButton;
-    
+    void Start(){
+        playButton.onClick.AddListener(Play);
+    }
     void Play(){
         SceneManager.LoadScene("MainScene");
     }
