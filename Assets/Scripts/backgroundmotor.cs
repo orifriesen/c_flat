@@ -5,7 +5,7 @@ using UnityEngine;
 public class backgroundmotor : MonoBehaviour
 {
     
-    private float moveSpeed = 0.0002f;
+    private float moveSpeed = 0.00025f;
     public float XPosVelocity = -1;
     public float YPosVelocity = -1;
     private float moveSpeedToReach = 0.0002f;
@@ -16,13 +16,22 @@ public class backgroundmotor : MonoBehaviour
     private BoxCollider2D collider2D;
     void Start(){
         collider2D = GetComponent<BoxCollider2D>();
+        
+        this.transform.Translate(new Vector3(Random.Range(-4, 0), Random.Range(-6, 0), 0));
+        
+        if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+        }
+        if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+        }
     }
 
-    // Update is called once per frame
+
     void Update()
     {   
         if((Time.time > delaySpeedChange + lastSpeedChange)){
-            moveSpeedToReach = Random.Range(0.0001f, 0.0003f);
+            moveSpeedToReach = Random.Range(0.0001f, 0.0004f);
             lastSpeedChange = Time.time;
         }
         if(moveSpeed!=moveSpeedToReach){
@@ -32,15 +41,27 @@ public class backgroundmotor : MonoBehaviour
 
         if(!collider2D.bounds.Contains(new Vector3(9.5f, 0, 0)) && XPosVelocity == -1){
             XPosVelocity *= -1;
+            if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+            }
         }
         if(!collider2D.bounds.Contains(new Vector3(-9.5f, 0, 0)) && XPosVelocity == 1){
             XPosVelocity *= -1;
+            if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+            }
         }
         if(!collider2D.bounds.Contains(new Vector3(0, 5.5f, 0)) && YPosVelocity == -1){
             YPosVelocity *= -1;
+            if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+            }
         }
         if(!collider2D.bounds.Contains(new Vector3(0, -5.5f, 0)) && YPosVelocity == 1){
             YPosVelocity *= -1;
+            if(Random.Range(0, 2) > 1){
+                YPosVelocity *= -1;
+            }
         }
     }
 }

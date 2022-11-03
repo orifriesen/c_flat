@@ -9,6 +9,7 @@ TagManager:
   - MainCanvas
   - TempUI
   - line
+  - Background
   layers:
   - Default
   - TransparentFX
