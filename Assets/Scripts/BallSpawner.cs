@@ -19,7 +19,8 @@ public class BallSpawner : MonoBehaviour
         if(Time.time > delay + lastSpawn){
 
             GameObject newBall = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
-            
+
+            Physics2D.IgnoreCollision(newBall.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Background").GetComponent<BoxCollider2D>());
 
             GameObject[] otherBalls = GameObject.FindGameObjectsWithTag("Ball");
 
