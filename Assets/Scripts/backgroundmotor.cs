@@ -5,10 +5,10 @@ using UnityEngine;
 public class backgroundmotor : MonoBehaviour
 {
     
-    private float moveSpeed = 0.0001f;
+    private float moveSpeed = 0.00015f;
     public float XPosVelocity = -1;
     public float YPosVelocity = -1;
-    private float moveSpeedToReach = 0.0001f;
+    private float moveSpeedToReach = 0.00015f;
     private float delaySpeedChange = 5f;
     private float lastSpeedChange = 0f;
 
@@ -31,7 +31,7 @@ public class backgroundmotor : MonoBehaviour
     void Update()
     {   
         if((Time.time > delaySpeedChange + lastSpeedChange)){
-            moveSpeedToReach = Random.Range(0.00005f, 0.0001f);
+            moveSpeedToReach = Random.Range(0.0001f, 0.0002f);
             lastSpeedChange = Time.time;
         }
         if(moveSpeed!=moveSpeedToReach){
