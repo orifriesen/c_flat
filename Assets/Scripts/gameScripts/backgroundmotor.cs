@@ -14,7 +14,7 @@ public class backgroundmotor : MonoBehaviour
 
     private float moveSpeedMin = 0.0002f;
     private float moveSpeedMax = 0.0005f;
-    private BoxCollider2D collider2D;
+    private BoxCollider2D thisCollider2D;
 
     public Sprite[] texNames;
     void Start(){
@@ -22,7 +22,7 @@ public class backgroundmotor : MonoBehaviour
         int TexInt = Random.Range(0, texNames.Length);
         gameObject.GetComponent<SpriteRenderer>().sprite = texNames[TexInt];
 
-        collider2D = GetComponent<BoxCollider2D>();
+        thisCollider2D = GetComponent<BoxCollider2D>();
         
         this.transform.Translate(new Vector3(Random.Range(-4, 0), Random.Range(-6, 0), 0));
         
@@ -57,16 +57,16 @@ public class backgroundmotor : MonoBehaviour
         
         transform.Translate(new Vector3(moveSpeedX, moveSpeedY, 0));
 
-        if(!collider2D.bounds.Contains(new Vector3(10f, 0, 0)) && moveSpeedToReachX < 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(10f, 0, 0)) && moveSpeedToReachX < 0){
             moveSpeedToReachX *= -1;
         }
-        if(!collider2D.bounds.Contains(new Vector3(-10f, 0, 0)) && moveSpeedToReachX > 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(-10f, 0, 0)) && moveSpeedToReachX > 0){
             moveSpeedToReachX *= -1;
         }
-        if(!collider2D.bounds.Contains(new Vector3(0, 6f, 0)) && moveSpeedToReachY < 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, 6f, 0)) && moveSpeedToReachY < 0){
             moveSpeedToReachY *= -1;
         }
-        if(!collider2D.bounds.Contains(new Vector3(0, -6f, 0)) && moveSpeedToReachY > 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, -6f, 0)) && moveSpeedToReachY > 0){
             moveSpeedToReachY *= -1;
         }
     }
