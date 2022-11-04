@@ -42,6 +42,10 @@ public class backgroundmotor : MonoBehaviour
 
     void Update()
     {   
+        if(Time.timeScale == 0){
+            return;
+        }
+
         if((Time.time > delaySpeedChange + lastSpeedChange)){
             moveSpeedToReachX = Random.Range(moveSpeedMin, moveSpeedMax);
             moveSpeedToReachY = Random.Range(moveSpeedMin, moveSpeedMax);

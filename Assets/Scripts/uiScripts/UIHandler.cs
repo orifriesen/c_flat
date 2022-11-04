@@ -12,7 +12,7 @@ public class UIHandler : MonoBehaviour
     public BallSpawner ballSpawner;
     public Slider gravitySlider;
     public Slider bloomSlider;
-    public Toggle playButton;
+    // public Toggle playButton;
     
     public GameObject VolumeObj;
     private Volume volume;
@@ -20,12 +20,16 @@ public class UIHandler : MonoBehaviour
     private int UILayer;
     private bool isButtonDownOnUI = false;
     
+    private float firstDelay = 0.5f;
+    private float initTime;
 
     void Start(){
+        initTime = Time.time;
         resetButton.onClick.AddListener(ResetOnClick);
 
         bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
         gravitySlider.onValueChanged.AddListener(delegate {gravityChange();});
+        // playButton.onValueChanged.AddListener(delegate {pauseChange();});
 
         lineDrawer = GetComponent<drawLine>();
         UILayer = LayerMask.NameToLayer("UI");
@@ -34,6 +38,7 @@ public class UIHandler : MonoBehaviour
 
     //calls the relevant scripts each frame
     void Update(){
+
         if(Input.GetMouseButton(0) && IsPointerOverUIElement()) {
             isButtonDownOnUI = true;
         }
@@ -41,24 +46,30 @@ public class UIHandler : MonoBehaviour
             isButtonDownOnUI = false;
         }
         
-        if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI) {
-            lineDrawer.startLine();
-        }else if(Input.GetMouseButton(0) && !isButtonDownOnUI){
-            lineDrawer.finishLine();
-        }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            lineDrawer.destroyIfAt(pos);
-            destroyAllOfTag("TempUI");
-            createUIIfAt(pos);
-        }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
-            Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            BallSpawner b = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
+        try
+        {
+            if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
+                lineDrawer.startLine();
+            }else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
+                lineDrawer.finishLine();
+            }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                lineDrawer.destroyIfAt(pos);
+                destroyAllOfTag("TempUI");
+                createUIIfAt(pos);
+            }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
+                Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
+            }
+        }
+        catch (System.Exception)
+        {
+
         }
 
 
         if(Input.GetKeyDown(KeyCode.Space)){
-            // playButton.isOn = !playButton.isOn;
-            Time.timeScale = playButton.isOn ? 1 : 0;
+            pauseChange();
         }
 
         
@@ -127,5 +138,11 @@ public class UIHandler : MonoBehaviour
             foreach(GameObject gameObject in lst){
                 Destroy(gameObject);
             }
+    }
+
+    void pauseChange(){
+        // playButton.isOn = !playButton.isOn;
+        // Time.timeScale = playButton.isOn ? 1 : 0;
+         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 }
