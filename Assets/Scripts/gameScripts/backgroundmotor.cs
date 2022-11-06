@@ -7,6 +7,10 @@ public class backgroundmotor : MonoBehaviour
     
     private float moveSpeedY;
     private float moveSpeedX;
+
+    private float xMult;
+    private float yMult;
+
     private float moveSpeedToReachX;
      private float moveSpeedToReachY;
     private float delaySpeedChange = 5f;
@@ -16,11 +20,14 @@ public class backgroundmotor : MonoBehaviour
     private float moveSpeedMax = 0.0005f;
     private BoxCollider2D thisCollider2D;
 
-    public Sprite[] texNames;
+    public Sprite[] textures;
     void Start(){
 
-        int TexInt = Random.Range(0, texNames.Length);
-        gameObject.GetComponent<SpriteRenderer>().sprite = texNames[TexInt];
+        xMult=1;
+        yMult=1;
+
+        int TexInt = Random.Range(0, textures.Length);
+        gameObject.GetComponent<SpriteRenderer>().sprite = textures[TexInt];
 
         thisCollider2D = GetComponent<BoxCollider2D>();
         
@@ -32,10 +39,10 @@ public class backgroundmotor : MonoBehaviour
         moveSpeedToReachY = (moveSpeedMax + moveSpeedMin) /2f;
 
         if(Random.Range(0, 2) > 1){
-                moveSpeedX *= -1;
+                xMult *= -1;
         }
         if(Random.Range(0, 2) > 1){
-                moveSpeedY *= -1;
+                yMult *= -1;
         }
     }
 
@@ -46,32 +53,29 @@ public class backgroundmotor : MonoBehaviour
             return;
         }
 
+        if(!thisCollider2D.bounds.Contains(new Vector3(10.25f, 0, 0)) && xMult < 0){
+            xMult *= -1;
+        }
+        if(!thisCollider2D.bounds.Contains(new Vector3(-10.25f, 0, 0)) && xMult > 0){
+            xMult *= -1;
+        }
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, 6.25f, 0)) && yMult < 0){
+            yMult *= -1;
+        }
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, -6.25f, 0)) && yMult > 0){
+            yMult *= -1;
+        }
+
         if((Time.time > delaySpeedChange + lastSpeedChange)){
-            moveSpeedToReachX = Random.Range(moveSpeedMin, moveSpeedMax);
-            moveSpeedToReachY = Random.Range(moveSpeedMin, moveSpeedMax);
+            moveSpeedToReachX = Random.Range(moveSpeedMin, moveSpeedMax) * xMult;
+            moveSpeedToReachY = Random.Range(moveSpeedMin, moveSpeedMax) * yMult;
             lastSpeedChange = Time.time;
         }
         
-        if(moveSpeedX!=moveSpeedToReachX){
-            moveSpeedX += (moveSpeedToReachX-moveSpeedX)/600f;
-        }
-        if(moveSpeedY!=moveSpeedToReachY){
-            moveSpeedY += (moveSpeedToReachY-moveSpeedY)/600f;
-        }
-        
+        moveSpeedX += (moveSpeedToReachX-moveSpeedX)/600f;
+        moveSpeedY += (moveSpeedToReachY-moveSpeedY)/600f;
+
         transform.Translate(new Vector3(moveSpeedX, moveSpeedY, 0));
 
-        if(!thisCollider2D.bounds.Contains(new Vector3(10f, 0, 0)) && moveSpeedToReachX < 0){
-            moveSpeedToReachX *= -1;
-        }
-        if(!thisCollider2D.bounds.Contains(new Vector3(-10f, 0, 0)) && moveSpeedToReachX > 0){
-            moveSpeedToReachX *= -1;
-        }
-        if(!thisCollider2D.bounds.Contains(new Vector3(0, 6f, 0)) && moveSpeedToReachY < 0){
-            moveSpeedToReachY *= -1;
-        }
-        if(!thisCollider2D.bounds.Contains(new Vector3(0, -6f, 0)) && moveSpeedToReachY > 0){
-            moveSpeedToReachY *= -1;
-        }
     }
 }

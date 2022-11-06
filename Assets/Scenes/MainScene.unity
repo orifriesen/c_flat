@@ -775,6 +775,7 @@ MonoBehaviour:
   gravitySlider: {fileID: 1774892232}
   bloomSlider: {fileID: 1199127334}
   VolumeObj: {fileID: 1914107459}
+  pauseSprite: {fileID: 2060616986195157204, guid: 2e87c23b6549e804a889b6d3915d41e5, type: 3}
 --- !u!4 &306445504
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,7 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a03b4ae7c409a49bb261b044fd2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texNames:
+  textures:
   - {fileID: 21300000, guid: 121f25f83ebdcde46b8c758360213c06, type: 3}
   - {fileID: 21300000, guid: a9dee4af151aa10438ce7512d32f3565, type: 3}
   - {fileID: 21300000, guid: fa16ea01bf0b4294c9f192fa961ea7fa, type: 3}

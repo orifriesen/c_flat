@@ -23,6 +23,8 @@ public class UIHandler : MonoBehaviour
     private float firstDelay = 0.5f;
     private float initTime;
 
+    public GameObject pauseSprite;
+
     void Start(){
         initTime = Time.time;
         resetButton.onClick.AddListener(ResetOnClick);
@@ -143,6 +145,13 @@ public class UIHandler : MonoBehaviour
     void pauseChange(){
         // playButton.isOn = !playButton.isOn;
         // Time.timeScale = playButton.isOn ? 1 : 0;
-         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        if(Time.timeScale == 0){
+            GameObject pauseButton = GameObject.FindGameObjectWithTag("PauseUI");
+            Destroy(pauseButton);
+            Time.timeScale=1;
+        }else{
+            Instantiate(pauseSprite, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+            Time.timeScale=0;
+        }
     }
 }

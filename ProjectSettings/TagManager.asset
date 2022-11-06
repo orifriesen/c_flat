@@ -10,6 +10,7 @@ TagManager:
   - TempUI
   - line
   - Background
+  - PauseUI
   layers:
   - Default
   - TransparentFX
