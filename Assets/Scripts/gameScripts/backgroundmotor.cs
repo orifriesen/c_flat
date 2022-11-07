@@ -20,8 +20,15 @@ public class backgroundmotor : MonoBehaviour
     private float moveSpeedMax = 0.0005f;
     private BoxCollider2D thisCollider2D;
 
+    public Camera thisCamera;
+
+    private Vector2 screenBounds;
     public Sprite[] textures;
     void Start(){
+
+        screenBounds = thisCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, thisCamera.transform.position.z));
+        screenBounds.x *= 1.2f;
+        screenBounds.y *= 1.25f;
 
         xMult=1;
         yMult=1;
@@ -52,17 +59,18 @@ public class backgroundmotor : MonoBehaviour
         if(Time.timeScale == 0){
             return;
         }
-
-        if(!thisCollider2D.bounds.Contains(new Vector3(10.25f, 0, 0)) && xMult < 0){
+        
+        Debug.Log(screenBounds.x + " " + screenBounds.y);
+        if(!thisCollider2D.bounds.Contains(new Vector3(screenBounds.x, 0, 0)) && xMult < 0){
             xMult *= -1;
         }
-        if(!thisCollider2D.bounds.Contains(new Vector3(-10.25f, 0, 0)) && xMult > 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(-screenBounds.x, 0, 0)) && xMult > 0){
             xMult *= -1;
         }
-        if(!thisCollider2D.bounds.Contains(new Vector3(0, 6.25f, 0)) && yMult < 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, screenBounds.y, 0)) && yMult < 0){
             yMult *= -1;
         }
-        if(!thisCollider2D.bounds.Contains(new Vector3(0, -6.25f, 0)) && yMult > 0){
+        if(!thisCollider2D.bounds.Contains(new Vector3(0, -screenBounds.y, 0)) && yMult > 0){
             yMult *= -1;
         }
 

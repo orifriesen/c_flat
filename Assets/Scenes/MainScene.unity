@@ -1127,6 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a03b4ae7c409a49bb261b044fd2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1585969261}
   textures:
   - {fileID: 21300000, guid: 121f25f83ebdcde46b8c758360213c06, type: 3}
   - {fileID: 21300000, guid: a9dee4af151aa10438ce7512d32f3565, type: 3}
