@@ -29,10 +29,12 @@ public class HomeScreenScript : MonoBehaviour
     }
     void Info(){
         destroyAllTemp();
-        Instantiate(infoText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        GameObject go = Instantiate(infoText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        go.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
     }
     void Help(){
         destroyAllTemp();
-        Instantiate(helpText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        GameObject go = Instantiate(helpText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        go.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
     }
 }
