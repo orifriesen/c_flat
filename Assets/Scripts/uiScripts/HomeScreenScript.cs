@@ -18,7 +18,7 @@ public class HomeScreenScript : MonoBehaviour
         playButton.onClick.AddListener(Play);
         infoButton.onClick.AddListener(Info);
         helpButton.onClick.AddListener(Help);
-        textPos = new Vector3(0, -Screen.height/6f, 0);
+        textPos = new Vector3(0, -Screen.height/5f, 0);
     }
 
     void destroyAllTemp(){
