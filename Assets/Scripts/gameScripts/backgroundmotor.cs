@@ -60,7 +60,6 @@ public class backgroundmotor : MonoBehaviour
             return;
         }
         
-        Debug.Log(screenBounds.x + " " + screenBounds.y);
         if(!thisCollider2D.bounds.Contains(new Vector3(screenBounds.x, 0, 0)) && xMult < 0){
             xMult *= -1;
         }

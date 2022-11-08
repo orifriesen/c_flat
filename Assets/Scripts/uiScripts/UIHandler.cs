@@ -12,7 +12,10 @@ public class UIHandler : MonoBehaviour
     public BallSpawner ballSpawner;
     public Slider gravitySlider;
     public Slider bloomSlider;
-    // public Toggle playButton;
+    public GameObject playButton;
+    public Sprite PauseSprite;
+    public Sprite PlaySprite;
+
     
     public GameObject VolumeObj;
     private Volume volume;
@@ -31,7 +34,6 @@ public class UIHandler : MonoBehaviour
 
         bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
         gravitySlider.onValueChanged.AddListener(delegate {gravityChange();});
-        // playButton.onValueChanged.AddListener(delegate {pauseChange();});
 
         lineDrawer = GetComponent<drawLine>();
         UILayer = LayerMask.NameToLayer("UI");
@@ -47,10 +49,13 @@ public class UIHandler : MonoBehaviour
         if(isButtonDownOnUI == true && Input.GetMouseButtonUp(0)) {
             isButtonDownOnUI = false;
         }
-        
         try
-        {
-            if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
+        {   
+            Vector3 mousePoint = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            if(Input.GetMouseButtonUp(0) && playButton.GetComponent<Collider2D>().bounds.Contains(mousePoint)){
+                    pauseChange();
+            }
+            else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
                 lineDrawer.startLine();
             }else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
                 lineDrawer.finishLine();
@@ -66,7 +71,7 @@ public class UIHandler : MonoBehaviour
         }
         catch (System.Exception)
         {
-
+            
         }
 
 
@@ -146,11 +151,10 @@ public class UIHandler : MonoBehaviour
         // playButton.isOn = !playButton.isOn;
         // Time.timeScale = playButton.isOn ? 1 : 0;
         if(Time.timeScale == 0){
-            GameObject pauseButton = GameObject.FindGameObjectWithTag("PauseUI");
-            Destroy(pauseButton);
+            playButton.GetComponent<SpriteRenderer>().sprite = PlaySprite;
             Time.timeScale=1;
         }else{
-            Instantiate(pauseSprite, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+            playButton.GetComponent<SpriteRenderer>().sprite = PauseSprite;
             Time.timeScale=0;
         }
     }
