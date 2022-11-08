@@ -59,7 +59,7 @@ public class UIHandler : MonoBehaviour
                 lineDrawer.startLine();
             }else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
                 lineDrawer.finishLine();
-            }else if(Input.GetMouseButtonDown(1) && !isButtonDownOnUI){
+            }else if(Input.GetMouseButton(1) && !isButtonDownOnUI){
                 Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 lineDrawer.destroyIfAt(pos);
                 destroyAllOfTag("TempUI");
