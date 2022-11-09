@@ -73,9 +73,10 @@ public class Ball : MonoBehaviour
     //TODO handling of pitch based on color is ugly
     private void playClipOnVelocity(double matPos, int instrumentInt){
         AudioClip[] audioClips = null;
-        if(instrumentInt == 1){ audioClips = harmonic; }
-        if(instrumentInt == 2) { audioClips = guitarSounds;}
-        if(instrumentInt == 3) { audioClips = harmonic;}
+
+        if(instrumentInt <= 2){ audioClips = harmonic; }
+        else if(instrumentInt <= 5) { audioClips = guitarSounds;}
+        else if(instrumentInt <= 8) { audioClips = harmonic;}
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);

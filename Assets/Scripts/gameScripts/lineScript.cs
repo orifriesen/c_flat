@@ -7,4 +7,13 @@ public class lineScript : MonoBehaviour
     public double colorInt;
     public int instrumentInt;
     public Color color;
+    public Material material;
+
+    public void SetAll(lineScriptDataOnly ls){
+        colorInt = ls.colorInt;
+        instrumentInt = ls.instrumentInt;
+        color = ls.color;
+        material = ls.material;
+    }
 }
+

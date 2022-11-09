@@ -54,8 +54,7 @@ public class UIHandler : MonoBehaviour
             Vector3 mousePoint = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             if(Input.GetMouseButtonUp(0) && playButton.GetComponent<Collider2D>().bounds.Contains(mousePoint)){
                     pauseChange();
-            }
-            else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
+            }else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
                 lineDrawer.startLine();
             }else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
                 lineDrawer.finishLine();
@@ -148,8 +147,6 @@ public class UIHandler : MonoBehaviour
     }
 
     void pauseChange(){
-        // playButton.isOn = !playButton.isOn;
-        // Time.timeScale = playButton.isOn ? 1 : 0;
         if(Time.timeScale == 0){
             playButton.GetComponent<SpriteRenderer>().sprite = PauseSprite;
             Time.timeScale=1;
