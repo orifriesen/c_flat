@@ -27,8 +27,8 @@ public class backgroundmotor : MonoBehaviour
     void Start(){
 
         screenBounds = thisCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, thisCamera.transform.position.z));
-        screenBounds.x *= 1.2f;
-        screenBounds.y *= 1.25f;
+        screenBounds.x *= 1.35f;
+        screenBounds.y *= 1.35f;
 
         xMult=1;
         yMult=1;
@@ -60,7 +60,6 @@ public class backgroundmotor : MonoBehaviour
             return;
         }
         
-        Debug.Log(screenBounds.x + " " + screenBounds.y);
         if(!thisCollider2D.bounds.Contains(new Vector3(screenBounds.x, 0, 0)) && xMult < 0){
             xMult *= -1;
         }

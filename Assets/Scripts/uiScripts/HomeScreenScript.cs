@@ -12,10 +12,13 @@ public class HomeScreenScript : MonoBehaviour
 
     public GameObject helpText;
     public GameObject infoText;
+
+    private Vector3 textPos;
     void Start(){
         playButton.onClick.AddListener(Play);
         infoButton.onClick.AddListener(Info);
         helpButton.onClick.AddListener(Help);
+        textPos = new Vector3(0, -Screen.height/5f, 0);
     }
 
     void destroyAllTemp(){
@@ -29,12 +32,14 @@ public class HomeScreenScript : MonoBehaviour
     }
     void Info(){
         destroyAllTemp();
-        GameObject go = Instantiate(infoText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        GameObject go = Instantiate(infoText, new Vector3(0, 0, 0), new Quaternion(0,0,0,0));
+        go.transform.position = textPos;
         go.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
     }
     void Help(){
         destroyAllTemp();
-        GameObject go = Instantiate(helpText, new Vector3(0, -2, 0), new Quaternion(0,0,0,0));
+        GameObject go = Instantiate(helpText, new Vector3(0, 0, 0), new Quaternion(0,0,0,0));
+        go.transform.position = textPos;
         go.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
     }
 }

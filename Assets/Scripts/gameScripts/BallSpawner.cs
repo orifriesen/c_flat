@@ -21,6 +21,7 @@ public class BallSpawner : MonoBehaviour
             GameObject newBall = Instantiate(ball,  this.transform.localPosition, this.transform.localRotation);
 
             Physics2D.IgnoreCollision(newBall.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Background").GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreCollision(newBall.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("PauseUI").GetComponent<BoxCollider2D>());
 
             GameObject[] otherBalls = GameObject.FindGameObjectsWithTag("Ball");
 

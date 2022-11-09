@@ -12,8 +12,10 @@ public class drawLine : MonoBehaviour
 
     //starts the creation of a line
     public void startLine(){
+        
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         musicLines.Add(Instantiate(line));
+
         musicLines.Last().GetComponent<lineScript>().colorInt = toolSelect.getColorInt();
         musicLines.Last().GetComponent<lineScript>().color = toolSelect.getColor();
         musicLines.Last().GetComponent<lineScript>().instrumentInt = toolSelect.getInstrumentVal();
@@ -28,8 +30,7 @@ public class drawLine : MonoBehaviour
         musicLines.Last().GetComponent<LineRenderer>().material = toolSelector.lineMaterial;
     }
 
-    //destroys a line if it is at pos 
-    // TODO make a little more forgiving 
+    //destroys a line if it is at pos  
     public void destroyIfAt(Vector2 pos){
         int i=0;
         foreach(GameObject l in musicLines){
