@@ -151,10 +151,10 @@ public class UIHandler : MonoBehaviour
         // playButton.isOn = !playButton.isOn;
         // Time.timeScale = playButton.isOn ? 1 : 0;
         if(Time.timeScale == 0){
-            playButton.GetComponent<SpriteRenderer>().sprite = PlaySprite;
+            playButton.GetComponent<SpriteRenderer>().sprite = PauseSprite;
             Time.timeScale=1;
         }else{
-            playButton.GetComponent<SpriteRenderer>().sprite = PauseSprite;
+            playButton.GetComponent<SpriteRenderer>().sprite = PlaySprite;
             Time.timeScale=0;
         }
     }
