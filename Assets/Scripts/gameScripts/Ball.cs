@@ -11,6 +11,10 @@ public class Ball : MonoBehaviour
     public AudioClip[] majorKey;
     public AudioClip[] harmonic;
 
+    public AudioClip[] baseSounds;
+
+    public AudioClip[] drumSounds;
+
     public AudioClip[] guitarSounds;
     private float lastSound = 0.0f;
     private float delay = 0.05f;
@@ -76,7 +80,8 @@ public class Ball : MonoBehaviour
 
         if(instrumentInt <= 2){ audioClips = harmonic; }
         else if(instrumentInt <= 5) { audioClips = guitarSounds;}
-        else if(instrumentInt <= 8) { audioClips = harmonic;}
+        else if(instrumentInt <= 8) { audioClips = harmonic;} // Set to base noises
+        else if(instrumentInt <= 11) { audioClips = harmonic;} // Set to drum noises
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
