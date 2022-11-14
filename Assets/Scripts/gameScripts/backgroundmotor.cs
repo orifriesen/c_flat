@@ -24,8 +24,10 @@ public class backgroundmotor : MonoBehaviour
 
     private Vector2 screenBounds;
     public Sprite[] textures;
+    private float aplhaToReach;
     void Start(){
         DontDestroyOnLoad(this);
+        aplhaToReach = this.GetComponent<SpriteRenderer>().color.a;
 
         GameObject[] PhysichUI = GameObject.FindGameObjectsWithTag("PhyischsUI");
         foreach(GameObject go in PhysichUI){
@@ -66,6 +68,18 @@ public class backgroundmotor : MonoBehaviour
             return;
         }
         
+
+        float a = this.GetComponent<SpriteRenderer>().color.a;
+        if(a != aplhaToReach){
+            float newA = a;
+            a += (aplhaToReach-a)/600f;
+            this.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,a);
+        }
+
+        if(a+.01f >aplhaToReach && a-.01f < aplhaToReach){
+            aplhaToReach = a;
+        }
+
         if(!thisCollider2D.bounds.Contains(new Vector3(screenBounds.x, 0, 0)) && xMult < 0){
             xMult *= -1;
         }
@@ -92,5 +106,6 @@ public class backgroundmotor : MonoBehaviour
 
     }
     public void changeScene(){
+        aplhaToReach = 0.6f;
     }
 }

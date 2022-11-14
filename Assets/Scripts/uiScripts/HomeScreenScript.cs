@@ -43,8 +43,8 @@ public class HomeScreenScript : MonoBehaviour
             }
     }
     void Play(){
-
         SceneManager.LoadScene("MainScene");
+        backgroundmotor.changeScene();
     }
     void Info(){
         destroyAllTemp();
