@@ -25,6 +25,7 @@ public class backgroundmotor : MonoBehaviour
     private Vector2 screenBounds;
     public Sprite[] textures;
     void Start(){
+        DontDestroyOnLoad(this);
 
         GameObject[] PhysichUI = GameObject.FindGameObjectsWithTag("PhyischsUI");
         foreach(GameObject go in PhysichUI){
@@ -89,5 +90,7 @@ public class backgroundmotor : MonoBehaviour
 
         transform.Translate(new Vector3(moveSpeedX, moveSpeedY, 0));
 
+    }
+    public void changeScene(){
     }
 }

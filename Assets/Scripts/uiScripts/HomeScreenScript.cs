@@ -21,6 +21,8 @@ public class HomeScreenScript : MonoBehaviour
     private Vector2[] vectorsOne = new Vector2[]{new Vector2(-6, 1)};
     private Vector2[] vectorsTwo= new Vector2[]{new Vector2(6, 1)};
     private Material[] mat;
+
+    public backgroundmotor backgroundmotor;
     void Start(){
         mat = new Material[]{purple};
         playButton.onClick.AddListener(Play);
@@ -41,6 +43,7 @@ public class HomeScreenScript : MonoBehaviour
             }
     }
     void Play(){
+
         SceneManager.LoadScene("MainScene");
     }
     void Info(){
