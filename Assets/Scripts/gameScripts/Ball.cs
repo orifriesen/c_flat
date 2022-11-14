@@ -95,21 +95,12 @@ public class Ball : MonoBehaviour
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
         }
-        
         if(velocityArrValue < 0){
             velocityArrValue = 0;
         }
 
-
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
-
-
-        // double p = (matPos+3) / 6.0;
-        // double v = 1- (.2 + (p-1)/2.0);
-        // v = (v>1) ? 1 : v;
-        // audioSource.pitch = (float)p;
-        // audioSource.volume = (float)v;
         
         audioSource.Play();
     }
