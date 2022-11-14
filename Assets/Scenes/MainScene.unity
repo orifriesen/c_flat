@@ -787,10 +787,10 @@ MonoBehaviour:
   playButton: {fileID: 1468343863}
   PauseSprite: {fileID: 21300000, guid: 7a8143e8d745c19448df73ab4c75e089, type: 3}
   PlaySprite: {fileID: 21300000, guid: 4e5dc977b7dddb740823dbb0cf9ec5f6, type: 3}
-  allBallSpawners:
-  - {fileID: 1764586417}
+  oneBallSpawner: {fileID: 0}
   VolumeObj: {fileID: 1914107459}
   pauseSprite: {fileID: 2060616986195157204, guid: 2e87c23b6549e804a889b6d3915d41e5, type: 3}
+  ballSpawnerInit: {fileID: 1764586417}
 --- !u!4 &306445504
 Transform:
   m_ObjectHideFlags: 0

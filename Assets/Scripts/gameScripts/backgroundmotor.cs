@@ -26,6 +26,11 @@ public class backgroundmotor : MonoBehaviour
     public Sprite[] textures;
     void Start(){
 
+        GameObject[] PhysichUI = GameObject.FindGameObjectsWithTag("PhyischsUI");
+        foreach(GameObject go in PhysichUI){
+                Physics2D.IgnoreCollision(go.GetComponent<Collider2D>(), this.GetComponent<Collider2D>()); 
+        }
+
         screenBounds = thisCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, thisCamera.transform.position.z));
         screenBounds.x *= 1.35f;
         screenBounds.y *= 1.35f;
