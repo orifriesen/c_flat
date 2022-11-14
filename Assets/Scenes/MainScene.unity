@@ -787,6 +787,8 @@ MonoBehaviour:
   playButton: {fileID: 1468343863}
   PauseSprite: {fileID: 21300000, guid: 7a8143e8d745c19448df73ab4c75e089, type: 3}
   PlaySprite: {fileID: 21300000, guid: 4e5dc977b7dddb740823dbb0cf9ec5f6, type: 3}
+  allBallSpawners:
+  - {fileID: 1764586417}
   VolumeObj: {fileID: 1914107459}
   pauseSprite: {fileID: 2060616986195157204, guid: 2e87c23b6549e804a889b6d3915d41e5, type: 3}
 --- !u!4 &306445504
@@ -3327,6 +3329,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e9f083f5010ca45b75dc92f95cafdd, type: 3}
+--- !u!114 &1764586417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1943256681330663174, guid: 83e9f083f5010ca45b75dc92f95cafdd, type: 3}
+  m_PrefabInstance: {fileID: 1764586416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442ab468d3ac82542889d10e06179b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1774892230
 GameObject:
   m_ObjectHideFlags: 0

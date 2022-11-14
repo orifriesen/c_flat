@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BallSpawner : MonoBehaviour
 {
-    private float lastSpawn = 0.0f;
+    private float lastSpawn;
     public float delay;
     public GameObject ball;
 
@@ -12,7 +12,7 @@ public class BallSpawner : MonoBehaviour
 
     private Button trashButton;
     private Slider speedSlider;
-
+    
     //spawns a ball every delay seconds
     void Update()
     {   
@@ -63,5 +63,10 @@ public class BallSpawner : MonoBehaviour
         trashButton.GetComponent<TrashButton>().setSlider(speedSlider);
     }
 
-
+    public void setLastSpawn(float time){
+        lastSpawn = time;
+    }
+    public float getLastSpawn(){
+        return lastSpawn;
+    }
 }

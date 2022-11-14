@@ -16,6 +16,7 @@ public class UIHandler : MonoBehaviour
     public Sprite PauseSprite;
     public Sprite PlaySprite;
 
+    public BallSpawner oneBallSpawner;
     
     public GameObject VolumeObj;
     private Volume volume;
@@ -27,8 +28,10 @@ public class UIHandler : MonoBehaviour
     private float initTime;
 
     public GameObject pauseSprite;
-
+    public BallSpawner ballSpawnerInit;
     void Start(){
+        oneBallSpawner = ballSpawnerInit;
+
         initTime = Time.time;
         resetButton.onClick.AddListener(ResetOnClick);
 
@@ -65,7 +68,19 @@ public class UIHandler : MonoBehaviour
                 createUIIfAt(pos);
             }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
                 Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
+                BallSpawner bs = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
+                float lastSpawn = Time.time;
+
+                if(oneBallSpawner == null){
+                    GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
+                    if(allBallSpawners.Length > 0){
+                        oneBallSpawner = allBallSpawners[0].GetComponent<BallSpawner>();
+                    }
+                }
+                if(oneBallSpawner != null){
+                    lastSpawn = oneBallSpawner.getLastSpawn();
+                }
+                bs.setLastSpawn(lastSpawn);
             }
         }
         catch (System.Exception)

@@ -7,12 +7,17 @@ public class SpeedSlider : MonoBehaviour
 
     private BallSpawner ballSpawner;
     public void setValFromDelay(float delay){
-        this.gameObject.GetComponent<Slider>().value = delay /3.0f -.1f;
+        float newValue = delay /3.0f -.1f;
+        newValue = Mathf.Round(newValue*2.0f)/2.0f;
+        this.gameObject.GetComponent<Slider>().value = newValue;
     }
     public void SetBallSpawner(BallSpawner bs){
         ballSpawner = bs;
     }
     private void Update() {
-        ballSpawner.delay = (this.gameObject.GetComponent<Slider>().value + .1f)*3.0f;
+        float newValue = (this.gameObject.GetComponent<Slider>().value + .1f)*3.0f;
+        newValue = Mathf.Round(newValue*2.0f)/2.0f;
+        Debug.Log(newValue);
+        ballSpawner.delay = newValue;
     }
 }
