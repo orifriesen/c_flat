@@ -448,7 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a03b4ae7c409a49bb261b044fd2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCamera: {fileID: 89466317}
   textures:
   - {fileID: 21300000, guid: 121f25f83ebdcde46b8c758360213c06, type: 3}
   - {fileID: 21300000, guid: a9dee4af151aa10438ce7512d32f3565, type: 3}
@@ -515,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187720313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.384, y: 6.262, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -888,7 +887,7 @@ GameObject:
   - component: {fileID: 1003477753}
   m_Layer: 0
   m_Name: Song
-  m_TagString: PhyischsUI
+  m_TagString: PhysicsUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1442,7 +1441,7 @@ GameObject:
   - component: {fileID: 1366787808}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: PhyischsUI
+  m_TagString: PhysicsUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1613,7 +1612,6 @@ MonoBehaviour:
   infoText: {fileID: 7447033236468745276, guid: 0ea242b3ebfbe614498c68c716831b98, type: 3}
   lineScript: {fileID: 1368374541}
   purple: {fileID: 2100000, guid: 6bbbb86c538222b4a967f47cf07ce8a3, type: 2}
-  backgroundmotor: {fileID: 187720315}
 --- !u!114 &1368374541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,7 +1789,7 @@ GameObject:
   - component: {fileID: 1786032644}
   m_Layer: 0
   m_Name: Pong
-  m_TagString: PhyischsUI
+  m_TagString: PhysicsUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

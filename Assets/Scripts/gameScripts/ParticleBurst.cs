@@ -16,7 +16,7 @@ public class ParticleBurst : MonoBehaviour
         if(!other.gameObject.CompareTag("line")){
             return;
         }
-        ps.startColor = other.gameObject.GetComponent<lineScript>().color;
+        ps.startColor = other.gameObject.GetComponent<LineScript>().color;
         var em = collisionParticleSystem.emission;
         em.enabled = true;
         collisionParticleSystem.Play();

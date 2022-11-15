@@ -11,7 +11,7 @@ TagManager:
   - line
   - Background
   - PauseUI
-  - PhyischsUI
+  - PhysicsUI
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - Balls
   - Water
   - UI
-  - Platformn
+  - Background
   - 
   - 
   - 

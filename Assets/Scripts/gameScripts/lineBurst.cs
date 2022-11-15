@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lineBurst : MonoBehaviour
+public class LineBurst : MonoBehaviour
 {
     public ParticleSystem collisionParticleSystem;
 
