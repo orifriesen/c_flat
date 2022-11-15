@@ -32,10 +32,7 @@ public class BackGroundMotor : MonoBehaviour
         alphaToReach = this.GetComponent<SpriteRenderer>().color.a;
         thisCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        GameObject[] PhysichUI = GameObject.FindGameObjectsWithTag("PhysicsUI");
-        foreach(GameObject go in PhysichUI){
-                Physics2D.IgnoreCollision(go.GetComponent<Collider2D>(), this.GetComponent<Collider2D>()); 
-        }
+        IgnoreAllUI();
 
         screenBounds = thisCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, thisCamera.transform.position.z));
         screenBounds.x *= 1.35f;
@@ -68,6 +65,7 @@ public class BackGroundMotor : MonoBehaviour
     void Update()
     {   
         if(goingToDestroyOthers){
+            IgnoreAllUI();
             if(Time.time > timeToDestroyOthers){
                 destroyOthers();
                 goingToDestroyOthers = false;
@@ -117,7 +115,7 @@ public class BackGroundMotor : MonoBehaviour
         alphaToReach = a;
         thisCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
-    public void destroyOthersDelayed(){
+    public void onMove(){
         goingToDestroyOthers = true;
         timeToDestroyOthers = Time.time + 0.05f;
     }
@@ -127,6 +125,13 @@ public class BackGroundMotor : MonoBehaviour
             if(!go.Equals(this.gameObject)){
                 Destroy(go);
             }
+        }
+    }
+
+    private void IgnoreAllUI(){
+        GameObject[] PhysicsUI = GameObject.FindGameObjectsWithTag("PhysicsUI");
+        foreach(GameObject go in PhysicsUI){
+                Physics2D.IgnoreCollision(go.GetComponent<Collider2D>(), this.GetComponent<Collider2D>()); 
         }
     }
 
