@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Ball : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Ball : MonoBehaviour
     public AudioClip[] drumSounds;
 
     public AudioClip[] guitarSounds;
+
+    public AudioMixerGroup mixer;
     private float lastSound = 0.0f;
     private float delay = 0.05f;
     private float minVelocity = 0.05f;
@@ -81,7 +84,7 @@ public class Ball : MonoBehaviour
         if(instrumentInt <= 2){ audioClips = harmonic; }
         else if(instrumentInt <= 5) { audioClips = guitarSounds;}
         else if(instrumentInt <= 8) { audioClips = harmonic;} // Set to base noises
-        else if(instrumentInt <= 11) { audioClips = harmonic;} // Set to drum noises
+        else if(instrumentInt <= 11) { audioClips = drumSounds;} // Set to drum noises
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);
@@ -101,6 +104,8 @@ public class Ball : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
 
+        AudioMixerGroup mixer = Resources.Load("ChangeSound") as AudioMixerGroup;
+        audioSource.outputAudioMixerGroup = mixer;
 
         // double p = (matPos+3) / 6.0;
         // double v = 1- (.2 + (p-1)/2.0);
@@ -109,5 +114,6 @@ public class Ball : MonoBehaviour
         // audioSource.volume = (float)v;
         
         audioSource.Play();
+        //audioSource.outputAudioMixerGroup = mixer;
     }
 }
