@@ -29,9 +29,6 @@ public class Ball : MonoBehaviour
 
     void Start()
     {   
-        drumSounds = harmonic; // toremove
-        baseSounds = harmonic; // toremove
-
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
@@ -86,7 +83,7 @@ public class Ball : MonoBehaviour
 
         if(instrumentInt <= 2){ audioClips = harmonic; }
         else if(instrumentInt <= 5) { audioClips = guitarSounds;}
-        else if(instrumentInt <= 8) { audioClips = baseSounds;} // Set to base noises
+        else if(instrumentInt <= 8) { audioClips = harmonic;} // Set to base noises
         else if(instrumentInt <= 11) { audioClips = drumSounds;} // Set to drum noises
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
@@ -98,15 +95,23 @@ public class Ball : MonoBehaviour
         if(velocityArrValue >= audioClips.Length){
             velocityArrValue = audioClips.Length -1;
         }
+        
         if(velocityArrValue < 0){
             velocityArrValue = 0;
         }
+
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
 
         AudioMixerGroup mixer = Resources.Load("ChangeSound") as AudioMixerGroup;
         audioSource.outputAudioMixerGroup = mixer;
+
+        // double p = (matPos+3) / 6.0;
+        // double v = 1- (.2 + (p-1)/2.0);
+        // v = (v>1) ? 1 : v;
+        // audioSource.pitch = (float)p;
+        // audioSource.volume = (float)v;
         
         audioSource.Play();
         //audioSource.outputAudioMixerGroup = mixer;

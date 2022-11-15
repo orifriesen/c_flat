@@ -19,10 +19,6 @@ public class UIHandler : MonoBehaviour
     public BallSpawner oneBallSpawner;
     
     public GameObject VolumeObj;
-
-    public GameObject pauseSprite;
-    public BallSpawner ballSpawnerInit;
-
     private Volume volume;
     private drawLine lineDrawer;
     private int UILayer;
@@ -30,6 +26,9 @@ public class UIHandler : MonoBehaviour
     
     private float firstDelay = 0.5f;
     private float initTime;
+
+    public GameObject pauseSprite;
+    public BallSpawner ballSpawnerInit;
     void Start(){
         oneBallSpawner = ballSpawnerInit;
 
@@ -53,26 +52,42 @@ public class UIHandler : MonoBehaviour
         if(isButtonDownOnUI == true && Input.GetMouseButtonUp(0)) {
             isButtonDownOnUI = false;
         }
-        try{   
+        try
+        {   
             Vector3 mousePoint = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             if(Input.GetMouseButtonUp(0) && playButton.GetComponent<Collider2D>().bounds.Contains(mousePoint)){
                     pauseChange();
-            }
-            else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
+            }else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
                 lineDrawer.startLine();
-            }
-            else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
+            }else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
                 lineDrawer.finishLine();
-            }
-            else if(Input.GetMouseButton(1) && !isButtonDownOnUI){
-                rightClick();
+            }else if(Input.GetMouseButton(1) && !isButtonDownOnUI){
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                lineDrawer.destroyIfAt(pos);
+                destroyAllOfTag("TempUI");
+                createUIIfAt(pos);
             }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
-                bPressed();
+                Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                BallSpawner bs = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
+                float lastSpawn = Time.time;
+
+                if(oneBallSpawner == null){
+                    GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
+                    if(allBallSpawners.Length > 0){
+                        oneBallSpawner = allBallSpawners[0].GetComponent<BallSpawner>();
+                    }
+                }
+                if(oneBallSpawner != null){
+                    lastSpawn = oneBallSpawner.getLastSpawn();
+                }
+                bs.setLastSpawn(lastSpawn);
             }
         }
-        catch (System.Exception){
+        catch (System.Exception)
+        {
             
         }
+
 
         if(Input.GetKeyDown(KeyCode.Space)){
             pauseChange();
@@ -154,28 +169,5 @@ public class UIHandler : MonoBehaviour
             playButton.GetComponent<SpriteRenderer>().sprite = PlaySprite;
             Time.timeScale=0;
         }
-    }
-
-    void rightClick(){
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lineDrawer.destroyIfAt(pos);
-        destroyAllOfTag("TempUI");
-        createUIIfAt(pos);
-    }
-
-    void bPressed(){
-        Vector3 mosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        BallSpawner bs = Instantiate(ballSpawner, new Vector3(mosPos.x, mosPos.y, 0), ballSpawner.transform.localRotation);
-        float lastSpawn = Time.time;
-        if(oneBallSpawner == null){
-            GameObject[] allBallSpawners = GameObject.FindGameObjectsWithTag("BallSpawner");
-            if(allBallSpawners.Length > 0){
-                oneBallSpawner = allBallSpawners[0].GetComponent<BallSpawner>();
-            }
-        }
-        if(oneBallSpawner != null){
-            lastSpawn = oneBallSpawner.getLastSpawn();
-        }
-        bs.setLastSpawn(lastSpawn);
     }
 }
