@@ -12,6 +12,9 @@ public class HomeScreenScript : MonoBehaviour
 
     public GameObject helpText;
     public GameObject infoText;
+    public DrawLine lineScript;
+    public Material purple;
+    private BackGroundMotor backGroundMotor;
 
     private Vector3 textPos;
 
@@ -34,6 +37,12 @@ public class HomeScreenScript : MonoBehaviour
 
     }
 
+    void Update() {
+        if(backGroundMotor == null){
+            backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGroundMotor>();
+        }
+    }
+
     void destroyAllTemp(){
         GameObject[] lst = GameObject.FindGameObjectsWithTag("TempUI");
             foreach(GameObject gameObject in lst){
@@ -41,7 +50,9 @@ public class HomeScreenScript : MonoBehaviour
             }
     }
     void Play(){
+        backGroundMotor.destroyOthers();
         SceneManager.LoadScene("MainScene");
+        backGroundMotor.changeAlphaToReach(0.6f);
     }
     void Info(){
         destroyAllTemp();

@@ -209,10 +209,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 63aa41185e4be9848bed6ce598cba5ab, type: 3}
   baseSounds: []
   drumSounds:
-  - {fileID: 8300000, guid: 101c2fab64a03634d84461b0ab1a8760, type: 3}
   - {fileID: 8300000, guid: bc732311b9ebe3c4e928550393c87055, type: 3}
-  - {fileID: 8300000, guid: 4d015a1f3ebf558499ae1d4713a5d83b, type: 3}
+  - {fileID: 8300000, guid: 101c2fab64a03634d84461b0ab1a8760, type: 3}
   - {fileID: 8300000, guid: a1115e203172e6242a65345da28c6adf, type: 3}
+  - {fileID: 8300000, guid: 4d015a1f3ebf558499ae1d4713a5d83b, type: 3}
   guitarSounds:
   - {fileID: 8300000, guid: be4ca6d75a941a94b8a964f75f57aef2, type: 3}
   - {fileID: 8300000, guid: 7bba90413b30e1745b85a477f66a967d, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lineScript : MonoBehaviour
+public class LineScript : MonoBehaviour
 {
     public double colorInt;
     public int instrumentInt;

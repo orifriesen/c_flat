@@ -2,21 +2,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class drawLine : MonoBehaviour
+public class DrawLine : MonoBehaviour
 {
-    private Vector2 initMousePos, finalMousePos;
     public GameObject line;
+
+    public ToolSelector toolSelect;
+
+    private Vector2 initMousePos, finalMousePos;
     private List<GameObject> musicLines = new List<GameObject>();
-
-    public toolSelector toolSelect;
-
     //starts the creation of a line
     public void startLine(){
         
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         musicLines.Add(Instantiate(line));
 
-        musicLines.Last().GetComponent<lineScript>().SetAll(toolSelect.GetCurLineScript());
+        musicLines.Last().GetComponent<LineScript>().SetAll(toolSelect.GetCurLineScript());
     }
 
     //finishes it
@@ -25,7 +25,7 @@ public class drawLine : MonoBehaviour
         musicLines.Last().GetComponent<LineRenderer>().SetPosition(0, initMousePos);
         musicLines.Last().GetComponent<LineRenderer>().SetPosition(1, finalMousePos);
         musicLines.Last().GetComponent<EdgeCollider2D>().SetPoints(new List<Vector2>(){initMousePos, finalMousePos});
-        musicLines.Last().GetComponent<LineRenderer>().material = toolSelector.lineMaterial;
+        musicLines.Last().GetComponent<LineRenderer>().material = ToolSelector.lineMaterial;
     }
 
     //Doesnt set them up to be struck by balls, just to look at 

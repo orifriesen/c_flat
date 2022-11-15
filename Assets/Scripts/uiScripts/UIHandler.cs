@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
+
 public class UIHandler : MonoBehaviour
 { 
     public Button resetButton;
@@ -19,8 +21,13 @@ public class UIHandler : MonoBehaviour
     public BallSpawner oneBallSpawner;
     
     public GameObject VolumeObj;
+
+    public GameObject pauseSprite;
+    public BallSpawner ballSpawnerInit;
+    private BackGroundMotor backGroundMotor;
+
     private Volume volume;
-    private drawLine lineDrawer;
+    private DrawLine lineDrawer;
     private int UILayer;
     private bool isButtonDownOnUI = false;
     
@@ -30,6 +37,15 @@ public class UIHandler : MonoBehaviour
     public GameObject pauseSprite;
     public BallSpawner ballSpawnerInit;
     void Start(){
+        try{
+          backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGroundMotor>();   
+        }
+        catch (System.Exception){            
+            
+        }
+
+        
+        
         oneBallSpawner = ballSpawnerInit;
 
         initTime = Time.time;
@@ -38,7 +54,7 @@ public class UIHandler : MonoBehaviour
         bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
         gravitySlider.onValueChanged.AddListener(delegate {gravityChange();});
 
-        lineDrawer = GetComponent<drawLine>();
+        lineDrawer = GetComponent<DrawLine>();
         UILayer = LayerMask.NameToLayer("UI");
         volume = VolumeObj.GetComponent<Volume>();
     }
@@ -95,12 +111,17 @@ public class UIHandler : MonoBehaviour
 
         
     }
-    //Destroys all balls lines and ball spawners
+    // //Destroys all balls lines and ball spawners
+    // void ResetOnClick(){
+    //         destroyAllOfTag("Ball");
+    //         destroyAllOfTag("BallSpawner");
+    //         destroyAllOfTag("TempUI");
+    //         lineDrawer.DestroyAll();   
+	// }
     void ResetOnClick(){
-            destroyAllOfTag("Ball");
-            destroyAllOfTag("BallSpawner");
-            destroyAllOfTag("TempUI");
-            lineDrawer.DestroyAll();   
+        backGroundMotor.destroyOthersDelayed();
+        SceneManager.LoadScene("HomeScreen");
+        backGroundMotor.changeAlphaToReach(0.9f);
 	}
     
     //Returns 'true' if we touched or hovering on Unity UI element.

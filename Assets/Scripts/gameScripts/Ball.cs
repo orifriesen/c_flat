@@ -29,6 +29,8 @@ public class Ball : MonoBehaviour
 
     void Start()
     {   
+        baseSounds = harmonic; // toremove
+
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
@@ -71,7 +73,7 @@ public class Ball : MonoBehaviour
         }
         
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
-            playClipOnVelocity(other.gameObject.GetComponent<lineScript>().colorInt, other.gameObject.GetComponent<lineScript>().instrumentInt);
+            playClipOnVelocity(other.gameObject.GetComponent<LineScript>().colorInt, other.gameObject.GetComponent<LineScript>().instrumentInt);
             lastSound = Time.time;
         }
     }
