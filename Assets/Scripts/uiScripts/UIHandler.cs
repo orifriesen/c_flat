@@ -119,7 +119,7 @@ public class UIHandler : MonoBehaviour
     //         lineDrawer.DestroyAll();   
 	// }
     void ResetOnClick(){
-        backGroundMotor.destroyOthersDelayed();
+        backGroundMotor.onMove();
         SceneManager.LoadScene("HomeScreen");
         backGroundMotor.changeAlphaToReach(0.9f);
 	}

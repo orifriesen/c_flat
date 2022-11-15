@@ -50,7 +50,7 @@ public class HomeScreenScript : MonoBehaviour
             }
     }
     void Play(){
-        backGroundMotor.destroyOthers();
+        backGroundMotor.onMove();
         SceneManager.LoadScene("MainScene");
         backGroundMotor.changeAlphaToReach(0.6f);
     }
