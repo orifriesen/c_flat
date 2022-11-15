@@ -1,8 +1,6 @@
-     using System.Collections;
-     using System.Collections.Generic;
-     using UnityEngine;
-     using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class HomeScreenScript : MonoBehaviour
 {   
 
@@ -12,15 +10,16 @@ public class HomeScreenScript : MonoBehaviour
 
     public GameObject helpText;
     public GameObject infoText;
-
-    private Vector3 textPos;
-
     public drawLine lineScript;
     public Material purple;
+    public backgroundmotor backgroundmotor;
+
+    private Vector3 textPos;
 
     private Vector2[] vectorsOne = new Vector2[]{new Vector2(-6, 1)};
     private Vector2[] vectorsTwo= new Vector2[]{new Vector2(6, 1)};
     private Material[] mat;
+
     void Start(){
         mat = new Material[]{purple};
         playButton.onClick.AddListener(Play);
@@ -42,6 +41,7 @@ public class HomeScreenScript : MonoBehaviour
     }
     void Play(){
         SceneManager.LoadScene("MainScene");
+        backgroundmotor.changeScene();
     }
     void Info(){
         destroyAllTemp();
