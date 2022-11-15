@@ -2,7 +2,7 @@
      using System.Collections.Generic;
      using UnityEngine;
      using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
+     using UnityEngine.UI;
 public class HomeScreenScript : MonoBehaviour
 {   
 
@@ -18,8 +18,6 @@ public class HomeScreenScript : MonoBehaviour
 
     private Vector3 textPos;
 
-    public drawLine lineScript;
-    public Material purple;
 
     private Vector2[] vectorsOne = new Vector2[]{new Vector2(-6, 1)};
     private Vector2[] vectorsTwo= new Vector2[]{new Vector2(6, 1)};

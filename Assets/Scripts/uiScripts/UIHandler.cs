@@ -34,8 +34,6 @@ public class UIHandler : MonoBehaviour
     private float firstDelay = 0.5f;
     private float initTime;
 
-    public GameObject pauseSprite;
-    public BallSpawner ballSpawnerInit;
     void Start(){
         try{
           backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGroundMotor>();   
