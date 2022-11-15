@@ -11,6 +11,7 @@ TagManager:
   - line
   - Background
   - PauseUI
+  - PhyischsUI
   layers:
   - Default
   - TransparentFX

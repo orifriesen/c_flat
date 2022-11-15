@@ -17,7 +17,6 @@ public class SpeedSlider : MonoBehaviour
     private void Update() {
         float newValue = (this.gameObject.GetComponent<Slider>().value + .1f)*3.0f;
         newValue = Mathf.Round(newValue*2.0f)/2.0f;
-        Debug.Log(newValue);
         ballSpawner.delay = newValue;
     }
 }
