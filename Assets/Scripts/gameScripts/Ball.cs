@@ -73,7 +73,7 @@ public class Ball : MonoBehaviour
         }
         
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
-            playClipOnVelocity(other.gameObject.GetComponent<LineScript>().colorInt, other.gameObject.GetComponent<LineScript>().instrumentInt);
+            playClipOnVelocity(other.gameObject.GetComponent<lineScript>().colorInt, other.gameObject.GetComponent<lineScript>().instrumentInt);
             lastSound = Time.time;
         }
     }

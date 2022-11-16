@@ -10,9 +10,9 @@ public class HomeScreenScript : MonoBehaviour
 
     public GameObject helpText;
     public GameObject infoText;
-    public DrawLine lineScript;
+    public LineDrawer lineScript;
     public Material purple;
-    private BackGroundMotor backGroundMotor;
+    private Background backGroundMotor;
 
     private Vector3 textPos;
 
@@ -35,7 +35,7 @@ public class HomeScreenScript : MonoBehaviour
 
     void Update() {
         if(backGroundMotor == null){
-            backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGroundMotor>();
+            backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         }
     }
 

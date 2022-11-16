@@ -24,10 +24,10 @@ public class UIHandler : MonoBehaviour
 
     public GameObject pauseSprite;
     public BallSpawner ballSpawnerInit;
-    private BackGroundMotor backGroundMotor;
+    private Background backGroundMotor;
 
     private Volume volume;
-    private DrawLine lineDrawer;
+    private LineDrawer lineDrawer;
     private int UILayer;
     private bool isButtonDownOnUI = false;
     
@@ -35,7 +35,7 @@ public class UIHandler : MonoBehaviour
     private float initTime;
     void Start(){
         try{
-          backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGroundMotor>();   
+          backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();   
         }
         catch (System.Exception){            
             
@@ -51,7 +51,7 @@ public class UIHandler : MonoBehaviour
         bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
         gravitySlider.onValueChanged.AddListener(delegate {gravityChange();});
 
-        lineDrawer = GetComponent<DrawLine>();
+        lineDrawer = GetComponent<LineDrawer>();
         UILayer = LayerMask.NameToLayer("UI");
         volume = VolumeObj.GetComponent<Volume>();
     }
