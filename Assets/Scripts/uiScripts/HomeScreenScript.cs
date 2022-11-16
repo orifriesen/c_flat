@@ -26,7 +26,7 @@ public class HomeScreenScript : MonoBehaviour
         playButton.onClick.AddListener(Play);
         infoButton.onClick.AddListener(Info);
         helpButton.onClick.AddListener(Help);
-        textPos = new Vector3(0, -Screen.height/5f, 0);
+        textPos = new Vector3(0, -Screen.height/4f, 0);
 
         for(int i=0; i<vectorsOne.Length; i++){
             lineScript.lineToFrom(vectorsOne[i], vectorsTwo[i], mat[i]);
