@@ -21,6 +21,7 @@ public class HomeScreenScript : MonoBehaviour
     private Material[] mat;
 
     void Start(){
+        Time.timeScale = 1;
         mat = new Material[]{purple};
         playButton.onClick.AddListener(Play);
         infoButton.onClick.AddListener(Info);
