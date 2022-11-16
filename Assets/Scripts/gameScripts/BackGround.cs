@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour
+public class BackGround : MonoBehaviour
 {
     
     private float moveSpeedY;

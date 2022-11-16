@@ -24,7 +24,7 @@ public class UIHandler : MonoBehaviour
 
     public GameObject pauseSprite;
     public BallSpawner ballSpawnerInit;
-    private Background backGroundMotor;
+    private BackGround backGroundMotor;
 
     private Volume volume;
     private LineDrawer lineDrawer;
@@ -35,7 +35,7 @@ public class UIHandler : MonoBehaviour
     private float initTime;
     void Start(){
         try{
-          backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();   
+          backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGround>();   
         }
         catch (System.Exception){            
             

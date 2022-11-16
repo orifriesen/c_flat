@@ -401,8 +401,8 @@ GameObject:
   m_Component:
   - component: {fileID: 187720317}
   - component: {fileID: 187720316}
-  - component: {fileID: 187720315}
   - component: {fileID: 187720314}
+  - component: {fileID: 187720318}
   m_Layer: 0
   m_Name: Background
   m_TagString: Background
@@ -436,24 +436,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40.96, y: 40.96}
   m_EdgeRadius: 0
---- !u!114 &187720315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187720313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96a03b4ae7c409a49bb261b044fd2132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 21300000, guid: 121f25f83ebdcde46b8c758360213c06, type: 3}
-  - {fileID: 21300000, guid: a9dee4af151aa10438ce7512d32f3565, type: 3}
-  - {fileID: 21300000, guid: fa16ea01bf0b4294c9f192fa961ea7fa, type: 3}
-  - {fileID: 21300000, guid: d66caf66361d6cc4c9a1054f0f11aaac, type: 3}
-  - {fileID: 21300000, guid: 4faebdc6c9a569e49b8975c5350bd1eb, type: 3}
 --- !u!212 &187720316
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -521,6 +503,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187720318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187720313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e9534254371c9418147b749efea6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures:
+  - {fileID: 21300000, guid: 121f25f83ebdcde46b8c758360213c06, type: 3}
+  - {fileID: 21300000, guid: a9dee4af151aa10438ce7512d32f3565, type: 3}
+  - {fileID: 21300000, guid: fa16ea01bf0b4294c9f192fa961ea7fa, type: 3}
+  - {fileID: 21300000, guid: d66caf66361d6cc4c9a1054f0f11aaac, type: 3}
+  - {fileID: 21300000, guid: 4faebdc6c9a569e49b8975c5350bd1eb, type: 3}
 --- !u!1 &370988826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1368374538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e0332c134bb4947a0722fabe6be9d3, type: 3}
+  m_Script: {fileID: 11500000, guid: dba9c0bb4a20db8409d96b9773bdefee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 6951144630429341995, guid: eaf89da40ec9ed94ca91462cb890e125, type: 3}
