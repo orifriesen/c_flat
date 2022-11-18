@@ -29,7 +29,6 @@ public class Ball : MonoBehaviour
 
     void Start()
     {   
-        baseSounds = harmonic; // toremove
 
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -88,8 +87,8 @@ public class Ball : MonoBehaviour
 
         if(instrumentInt <= 2){ audioClips = harmonic; }
         else if(instrumentInt <= 5) { audioClips = guitarSounds;}
-        else if(instrumentInt <= 8) { audioClips = baseSounds;} // Set to base noises
-        else if(instrumentInt <= 11) { audioClips = drumSounds;} // Set to drum noises
+        else if(instrumentInt <= 8) { audioClips = baseSounds;} 
+        else if(instrumentInt <= 11) { audioClips = drumSounds;} 
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);

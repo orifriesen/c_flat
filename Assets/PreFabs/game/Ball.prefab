@@ -207,7 +207,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1e2902d8ca2bdb44d94ec48e72904d3c, type: 3}
   - {fileID: 8300000, guid: 421033618106d6c4584907d7bd1cd185, type: 3}
   - {fileID: 8300000, guid: 63aa41185e4be9848bed6ce598cba5ab, type: 3}
-  baseSounds: []
+  baseSounds:
+  - {fileID: 8300000, guid: 29b94bd4904341a4493b875f0bcb6e57, type: 3}
+  - {fileID: 8300000, guid: 1a07a6bd7b41e4540a281240030efd74, type: 3}
+  - {fileID: 8300000, guid: 35dbcef328f08b140b3c5a53ab7c70c0, type: 3}
+  - {fileID: 8300000, guid: 8e24a7ea07e4e474c8c697044b585e13, type: 3}
+  - {fileID: 8300000, guid: 4a337cdf9ffc0544ba7bbb9e3ee4e0f7, type: 3}
+  - {fileID: 8300000, guid: 8cd02d45744bce946a11af5712e17b73, type: 3}
+  - {fileID: 8300000, guid: d9360acc58b7fff48a8170c7c6743bdb, type: 3}
+  - {fileID: 8300000, guid: 2f2da2d7f277423409709646390f99e7, type: 3}
   drumSounds:
   - {fileID: 8300000, guid: bc732311b9ebe3c4e928550393c87055, type: 3}
   - {fileID: 8300000, guid: 101c2fab64a03634d84461b0ab1a8760, type: 3}
