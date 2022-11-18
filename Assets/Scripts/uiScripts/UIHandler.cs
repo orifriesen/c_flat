@@ -40,7 +40,6 @@ public class UIHandler : MonoBehaviour
         catch (System.Exception){            
             
         }
-
         
         
         oneBallSpawner = ballSpawnerInit;
@@ -54,6 +53,9 @@ public class UIHandler : MonoBehaviour
         lineDrawer = GetComponent<LineDrawer>();
         UILayer = LayerMask.NameToLayer("UI");
         volume = VolumeObj.GetComponent<Volume>();
+
+        gravityChange();
+        bloomChange();
     }
 
     //calls the relevant scripts each frame
