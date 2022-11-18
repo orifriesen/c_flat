@@ -81,6 +81,9 @@ public class Ball : MonoBehaviour
     //Plays a clip from a new audiosource, the clip is based off velocity, and pitch scales with line color
     //TODO handling of pitch based on color is ugly
     private void playClipOnVelocity(double matPos, int instrumentInt){
+        if(instrumentInt == -1){
+            return;
+        }
         AudioClip[] audioClips = null;
 
         if(instrumentInt <= 2){ audioClips = harmonic; }

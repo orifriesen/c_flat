@@ -5,8 +5,8 @@ using System;
 
 public class toolSelector : MonoBehaviour
 {
-    public Button guitar1, guitar2, guitar3, piano1, piano2, piano3, bass1, bass2, bass3, drum1, drum2, drum3;
-    public Material guitar1m, guitar2m, guitar3m, piano1m, piano2m, piano3m, bass1m, bass2m, bass3m, drum1m, drum2m, drum3m;
+    public Button guitar1, guitar2, guitar3, piano1, piano2, piano3, bass1, bass2, bass3, drum1, drum2, drum3, none1;
+    public Material guitar1m, guitar2m, guitar3m, piano1m, piano2m, piano3m, bass1m, bass2m, bass3m, drum1m, drum2m, drum3m, none1m;
 
 
     private lineScriptDataOnly[] lineScripts;
@@ -22,9 +22,9 @@ public class toolSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Buttons = new Button[] {piano1, piano2, piano3, guitar1, guitar2, guitar3, bass1, bass2, bass3, drum1, drum2, drum3};
+        Buttons = new Button[] {piano1, piano2, piano3, guitar1, guitar2, guitar3, bass1, bass2, bass3, drum1, drum2, drum3, none1};
         lineScripts = new lineScriptDataOnly[Buttons.Length];
-        materials = new Material[] {piano1m, piano2m, piano3m, guitar1m, guitar2m, guitar3m, bass1m, bass2m, bass3m, drum1m, drum2m, drum3m};
+        materials = new Material[] {piano1m, piano2m, piano3m, guitar1m, guitar2m, guitar3m, bass1m, bass2m, bass3m, drum1m, drum2m, drum3m, none1m};
 
         for(int i=0; i<Buttons.Length; i++){
             int i1 = i; // Yes this is needed for some odd reason
@@ -32,6 +32,9 @@ public class toolSelector : MonoBehaviour
             lineScripts[i] = new lineScriptDataOnly();
             lineScripts[i].material = materials[i];
             lineScripts[i].instrumentInt = i;
+            if(Buttons[i] == none1){
+                lineScripts[i].instrumentInt = -1;
+            }
             if((i+1) % 3 == 1){
                 lineScripts[i].colorInt = pitchLower;
             }else if((i+1) % 3 == 2){
