@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1943256681330663175}
   - component: {fileID: 1943256681330663174}
   - component: {fileID: 1943256681330663176}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ball Spawner
   m_TagString: BallSpawner
   m_Icon: {fileID: 0}

@@ -2604,7 +2604,7 @@ GameObject:
   - component: {fileID: 1468343866}
   - component: {fileID: 1468343865}
   - component: {fileID: 1468343864}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: pause/play
   m_TagString: PauseUI
   m_Icon: {fileID: 0}

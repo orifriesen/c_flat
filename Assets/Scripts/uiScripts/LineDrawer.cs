@@ -5,18 +5,19 @@ using UnityEngine;
 public class LineDrawer : MonoBehaviour
 {
     public GameObject line;
-
     public toolSelector toolSelect;
 
     private Vector2 initMousePos, finalMousePos;
     private List<GameObject> musicLines = new List<GameObject>();
     //starts the creation of a line
-    public void startLine(){
+    public GameObject startLine(){
         
         initMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        musicLines.Add(Instantiate(line));
+        GameObject l = Instantiate(line);
+        musicLines.Add(l);
 
         musicLines.Last().GetComponent<lineScript>().SetAll(toolSelect.GetCurLineScript());
+        return l;
     }
 
     //finishes it
@@ -63,7 +64,5 @@ public class LineDrawer : MonoBehaviour
         Destroy(musicLines[n]);
         musicLines.RemoveAt(n);
     }
-
-    
 
 }

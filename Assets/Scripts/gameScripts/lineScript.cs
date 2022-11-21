@@ -15,5 +15,16 @@ public class lineScript : MonoBehaviour
         color = ls.color;
         material = ls.material;
     }
+    public void checkSelf() {
+            LineRenderer lr = this.GetComponent<LineRenderer>();
+            if(!lr.isVisible){
+                Destroy(this.gameObject);
+            }
+            Vector3 extents = lr.bounds.extents; 
+            if(extents.x == extents.y && extents.x  == extents.z && extents.z == extents.y){
+                Destroy(this.gameObject);
+            }
+            
+    }
 }
 

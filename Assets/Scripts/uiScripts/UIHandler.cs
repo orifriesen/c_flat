@@ -33,6 +33,8 @@ public class UIHandler : MonoBehaviour
     
     private float firstDelay = 0.5f;
     private float initTime;
+
+    private GameObject lastLine = null;
     void Start(){
         try{
           backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGround>();   
@@ -67,13 +69,15 @@ public class UIHandler : MonoBehaviour
         if(isButtonDownOnUI == true && Input.GetMouseButtonUp(0)) {
             isButtonDownOnUI = false;
         }
+
         try{   
             Vector3 mousePoint = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             if(Input.GetMouseButtonUp(0) && playButton.GetComponent<Collider2D>().bounds.Contains(mousePoint)){
                     pauseChange();
             }
             else if (Input.GetMouseButtonDown(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay) {
-                lineDrawer.startLine();
+                destroyAllOfTag("TempUI");
+                lastLine = lineDrawer.startLine();
             }
             else if(Input.GetMouseButton(0) && !isButtonDownOnUI && Time.time > initTime + firstDelay){
                 lineDrawer.finishLine();
@@ -83,9 +87,14 @@ public class UIHandler : MonoBehaviour
             }else if(Input.GetKeyDown("b") && !isButtonDownOnUI){
                 bPressed();
             }
+
+            if(Input.GetMouseButtonUp(0) && lastLine!=null && Time.time > initTime + firstDelay){
+                lastLine.GetComponent<lineScript>().checkSelf();
+                lastLine = null;
+            }
         }
         catch (System.Exception){
-            
+            Debug.Log("Error in UIHandler");
         }
 
         if(Input.GetKeyDown(KeyCode.Space)){
