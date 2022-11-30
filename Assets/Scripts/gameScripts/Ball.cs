@@ -88,7 +88,13 @@ public class Ball : MonoBehaviour
         if(instrumentInt <= 2){ audioClips = harmonic; }
         else if(instrumentInt <= 5) { audioClips = guitarSounds;}
         else if(instrumentInt <= 8) { audioClips = baseSounds;} 
-        else if(instrumentInt <= 11) { audioClips = drumSounds;} 
+        else if(instrumentInt <= 12) {
+            audioClips = drumSounds;
+            AudioSource audioSource2 = gameObject.AddComponent<AudioSource>();
+            audioSource2.clip = audioClips[instrumentInt-9];
+            audioSource2.Play();
+            return;
+        } 
 
         float velocity=Vector2.SqrMagnitude(this.rb.velocity);
         double velocityNormalized = Mathf.Log(velocity, 165)*(1.0/7.0) + (velocity/165)*(6.0/7.0);

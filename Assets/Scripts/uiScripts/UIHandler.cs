@@ -41,7 +41,7 @@ public class UIHandler : MonoBehaviour
           backGroundMotor = GameObject.FindGameObjectWithTag("Background").GetComponent<BackGround>();   
         }
         catch (System.Exception){            
-            
+            Debug.Log("if the game wasnt loaded from mainScene, there was an error");
         }
         
         
