@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 { 
+    public Button exitButton;
     public Button resetButton;
     public BallSpawner ballSpawner;
     public Slider gravitySlider;
@@ -47,6 +48,7 @@ public class UIHandler : MonoBehaviour
         oneBallSpawner = ballSpawnerInit;
 
         initTime = Time.time;
+        exitButton.onClick.AddListener(ExitOnClick);
         resetButton.onClick.AddListener(ResetOnClick);
 
         bloomSlider.onValueChanged.AddListener(delegate {bloomChange();});
@@ -104,13 +106,13 @@ public class UIHandler : MonoBehaviour
         
     }
     // //Destroys all balls lines and ball spawners
-    // void ResetOnClick(){
-    //         destroyAllOfTag("Ball");
-    //         destroyAllOfTag("BallSpawner");
-    //         destroyAllOfTag("TempUI");
-    //         lineDrawer.DestroyAll();   
-	// }
     void ResetOnClick(){
+            destroyAllOfTag("Ball");
+            destroyAllOfTag("BallSpawner");
+            destroyAllOfTag("TempUI");
+            lineDrawer.DestroyAll();   
+	}
+    void ExitOnClick(){
         backGroundMotor.onMove();
         SceneManager.LoadScene("HomeScreen");
         backGroundMotor.changeAlphaToReach(0.9f);
