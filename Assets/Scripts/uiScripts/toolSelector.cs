@@ -15,9 +15,9 @@ public class toolSelector : MonoBehaviour
     public static Material lineMaterial;
     private int linePos;
 
-    private float pitchLower = 1.4f;
-    private float pitchMid = 3f;
-    private float pitchUpper = 4.6f;
+    readonly private float pitchLower = 1.3f;
+    readonly private float pitchMid = 3f;
+    readonly private float pitchUpper = 4.7f;
 
     // Start is called before the first frame update
     void Start()

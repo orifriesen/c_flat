@@ -221,17 +221,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 101c2fab64a03634d84461b0ab1a8760, type: 3}
   - {fileID: 8300000, guid: a1115e203172e6242a65345da28c6adf, type: 3}
   - {fileID: 8300000, guid: 4d015a1f3ebf558499ae1d4713a5d83b, type: 3}
-  - {fileID: 8300000, guid: 1daf854bbb04de04582f913a50409668, type: 3}
-  - {fileID: 8300000, guid: b43be33800b6e4344b776ce276662132, type: 3}
-  - {fileID: 8300000, guid: ee414b9aa5329714bb653003689c451b, type: 3}
-  - {fileID: 8300000, guid: f616b5a6fcf036d4bbd12b93acbe431d, type: 3}
-  - {fileID: 8300000, guid: ff1325859fab85c48ad2df6d91dd799f, type: 3}
-  - {fileID: 8300000, guid: 75fd58291a3762446a2fb4be998b81f2, type: 3}
-  - {fileID: 8300000, guid: 6707a5676b9ac4f41bc8f0818b1ff726, type: 3}
-  - {fileID: 8300000, guid: 9c9ac51671df1f541a52d8f36fb7c25f, type: 3}
-  - {fileID: 8300000, guid: 3c1724a4a8208d14894b6bf9c8197f66, type: 3}
-  - {fileID: 8300000, guid: a3b1099644ed0924e8598a88b1c62c5a, type: 3}
-  - {fileID: 8300000, guid: 101c2fab64a03634d84461b0ab1a8760, type: 3}
   guitarSounds:
   - {fileID: 8300000, guid: be4ca6d75a941a94b8a964f75f57aef2, type: 3}
   - {fileID: 8300000, guid: 7bba90413b30e1745b85a477f66a967d, type: 3}
