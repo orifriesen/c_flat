@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class Ball : MonoBehaviour
 {
+    public ParticleSystem collisionParticleSystem;
+    private ParticleSystem.MainModule ps;
     private Rigidbody2D rb;
     public AudioSource sound;
     public AudioClip[] allKeys;
@@ -29,7 +31,7 @@ public class Ball : MonoBehaviour
 
     void Start()
     {   
-
+        ps = GetComponent<ParticleSystem>().main;
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         lastSound = Time.time;
@@ -70,10 +72,14 @@ public class Ball : MonoBehaviour
         if(!other.gameObject.CompareTag("line")){
             return;
         }
-        
+
         if((Time.time > delay + lastSound) && (Vector2.SqrMagnitude(this.rb.velocity) > minVelocity)){
             playClipOnVelocity(other.gameObject.GetComponent<lineScript>().colorInt, other.gameObject.GetComponent<lineScript>().instrumentInt);
             lastSound = Time.time;
+            ps.startColor = other.gameObject.GetComponent<lineScript>().color;
+            var em = collisionParticleSystem.emission;
+            em.enabled = true;
+            collisionParticleSystem.Play();
         }
     }
 
@@ -112,8 +118,8 @@ public class Ball : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[velocityArrValue];
 
-        AudioMixerGroup mixer = Resources.Load("ChangeSound") as AudioMixerGroup;
-        audioSource.outputAudioMixerGroup = mixer;
+        // AudioMixerGroup mixer = Resources.Load("ChangeSound") as AudioMixerGroup;
+        // audioSource.outputAudioMixerGroup = mixer;
         
         audioSource.Play();
         //audioSource.outputAudioMixerGroup = mixer;
