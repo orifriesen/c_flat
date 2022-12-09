@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <div class="web">
     <div id="unity-container" class="unity-desktop">
+      <h1>Song Pong</h1>
+      <div>An interactive song experience</div>
       <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -22,98 +25,159 @@
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">c_sharp</div>
       </div>
+      <div id="bottom-info">
+        <button id="toggle-to-2">About the Project</button>
+        <button id="toggle-to-1">About Us</button>
+
+        <div id="div-1">
+          <h3>About Us</h3>
+          <div class="row">
+            <div class="left">
+              <h3>Person 1</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, dolorum ipsa. Vel voluptatum inventore ab consequuntur labore nesciunt qui officia possimus! Aspernatur, error asperiores. Facilis cupiditate obcaecati quo autem eveniet.</p>
+            </div>
+            <div>
+              <h3>Person 2</h3>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem ipsum voluptatem quo magni, repellat officiis consequuntur itaque! Non optio id omnis error? Quisquam, quibusdam? Nulla minus vel nostrum quae aperiam.</p>  
+            </div>
+          </div>
+          <div class="row">
+            <div class="left">
+              <h3>Person 3</h3>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, asperiores eligendi! Magnam animi temporibus consectetur. Ab unde voluptatum maiores nemo, perferendis velit quod doloribus deserunt eos. Rem dolorem ullam sequi.</p>
+            </div>
+            <div>
+              <h3>Person 4</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officia, ab dignissimos ullam at numquam sunt tempora quo deleniti fugiat eveniet assumenda similique modi nesciunt illum iure temporibus itaque dolores.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="div2">
+          <h3>About the Project</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum voluptatibus quisquam illum vel. Officiis quia eligendi id tenetur commodi quis eius? Possimus, impedit. Enim, repudiandae quis reiciendis quam nam tempore!</p>
+        </div>
+      </div>
     </div>
-    <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+  </div>
+      <script>
+        var container = document.querySelector("#unity-container");
+        var canvas = document.querySelector("#unity-canvas");
+        var loadingBar = document.querySelector("#unity-loading-bar");
+        var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+        var warningBanner = document.querySelector("#unity-warning");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        // Shows a temporary message banner/ribbon for a few seconds, or
+        // a permanent error message on top of the canvas if type=='error'.
+        // If type=='warning', a yellow highlight color is used.
+        // Modify or remove this function to customize the visually presented
+        // way that non-critical warnings and error messages are presented to the
+        // user.
+        function unityShowBanner(msg, type) {
+          function updateBannerVisibility() {
+            warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+          }
+          var div = document.createElement('div');
+          div.innerHTML = msg;
+          warningBanner.appendChild(div);
+          if (type == 'error') div.style = 'background: red; padding: 10px;';
+          else {
+            if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+            setTimeout(function() {
+              warningBanner.removeChild(div);
+              updateBannerVisibility();
+            }, 5000);
+          }
+          updateBannerVisibility();
         }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
+
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/unityBuild.loader.js";
+        var config = {
+          dataUrl: buildUrl + "/unityBuild.data.unityweb",
+          frameworkUrl: buildUrl + "/unityBuild.framework.js.unityweb",
+          codeUrl: buildUrl + "/unityBuild.wasm.unityweb",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "c_sharp",
+          productVersion: "1.0",
+          showBanner: unityShowBanner,
+        };
+
+        // By default Unity keeps WebGL canvas render target size matched with
+        // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+        // Set this to false if you want to decouple this synchronization from
+        // happening inside the engine, and you would instead like to size up
+        // the canvas DOM size and WebGL render target sizes yourself.
+        // config.matchWebGLToCanvasSize = false;
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+          // Mobile device style: fill the whole browser client area with the game canvas:
+
+          var meta = document.createElement('meta');
+          meta.name = 'viewport';
+          meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+          document.getElementsByTagName('head')[0].appendChild(meta);
+          container.className = "unity-mobile";
+          canvas.className = "unity-mobile";
+
+          // To lower canvas resolution on mobile devices to gain some
+          // performance, uncomment the following line:
+          // config.devicePixelRatio = 1;
+
+          unityShowBanner('WebGL builds are not supported on mobile devices.');
+        } else {
+          // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+          canvas.style.width = "1280px";
+          canvas.style.height = "720px";
         }
-        updateBannerVisibility();
-      }
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/unityBuild.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/unityBuild.data.unityweb",
-        frameworkUrl: buildUrl + "/unityBuild.framework.js.unityweb",
-        codeUrl: buildUrl + "/unityBuild.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "c_sharp",
-        productVersion: "1.0",
-        showBanner: unityShowBanner,
-      };
+        loadingBar.style.display = "block";
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {
+            progressBarFull.style.width = 100 * progress + "%";
+          }).then((unityInstance) => {
+            loadingBar.style.display = "none";
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }).catch((message) => {
+            alert(message);
+          });
+        };
+        document.body.appendChild(script);
+      </script>
+      <script>
+        const toggleTo2 = document.getElementById("toggle-to-2");
+        const toggleTo1 = document.getElementById("toggle-to-1");
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+        const div1 = document.getElementById("div-1");
+        const div2 = document.getElementById("div2");
 
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
+        const hide = el => el.style.setProperty("display", "none");
+        const show = el => el.style.setProperty("display", "inline-block");
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+        hide(div2);
+        hide(toggleTo1);
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "1280px";
-        canvas.style.height = "720px";
-      }
-
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
+        toggleTo2.addEventListener("click", () => {
+          hide(div1);
+          hide(toggleTo2);
+          show(toggleTo1);
+          show(div2);
         });
-      };
-      document.body.appendChild(script);
-    </script>
+
+        toggleTo1.addEventListener("click", () => {
+          hide(div2);
+          hide(toggleTo1);
+          show(toggleTo2);
+          show(div1);
+        });
+      </script>
   </body>
 </html>
